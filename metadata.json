@@ -1,0 +1,6 @@
+{
+  "name": "GMR Mukunda",
+  "description": "Premium gated community luxury triplex villas in Rampur, Hanamkonda with state-of-the-art amenities and 16,000 sft modern clubhouse.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
