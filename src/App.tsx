@@ -14,6 +14,7 @@ import AmenitiesSection from "./components/AmenitiesSection";
 import NearbyLocations from "./components/NearbyLocations";
 import BrochureModal from "./components/BrochureModal";
 import VirtualTour from "./components/VirtualTour";
+import SampleVillasShowcase from "./components/SampleVillasShowcase";
 import { PROJECT_INFO, SPECIFICATIONS } from "./data";
 import {
   Sparkles,
@@ -185,6 +186,9 @@ export default function App() {
               </div>
             </div>
           </section>
+
+          {/* SAMPLE VILLA IMAGES INTERACTIVE SHOWCASE */}
+          <SampleVillasShowcase onBookTour={() => setIsFloatingFormOpen(true)} />
 
           {/* INTRO SPECS / BRIEF */}
           <section id="brief_section" className="py-24 bg-white relative overflow-hidden">
