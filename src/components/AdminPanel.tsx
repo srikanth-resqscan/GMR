@@ -120,9 +120,34 @@ export default function AdminPanel() {
     setIsLoading(false);
   };
 
+  const getSessionItem = (key: string): string | null => {
+    try {
+      return sessionStorage.getItem(key);
+    } catch (e) {
+      console.warn("Storage access restricted:", e);
+      return null;
+    }
+  };
+
+  const setSessionItem = (key: string, value: string) => {
+    try {
+      sessionStorage.setItem(key, value);
+    } catch (e) {
+      console.warn("Storage access restricted:", e);
+    }
+  };
+
+  const removeSessionItem = (key: string) => {
+    try {
+      sessionStorage.removeItem(key);
+    } catch (e) {
+      console.warn("Storage access restricted:", e);
+    }
+  };
+
   useEffect(() => {
-    // Check if token exists in session
-    const token = sessionStorage.getItem("gmr_admin_token");
+    // Check if token exists in session safely
+    const token = getSessionItem("gmr_admin_token");
     if (token === "gmr_secret_session_token_130_villas") {
       setIsAuthenticated(true);
       fetchLeads();
@@ -140,7 +165,7 @@ export default function AdminPanel() {
       });
       const data = await response.json();
       if (response.ok && data.success) {
-        sessionStorage.setItem("gmr_admin_token", data.token);
+        setSessionItem("gmr_admin_token", data.token);
         setIsAuthenticated(true);
         setPassword("");
         fetchLeads();
@@ -148,12 +173,13 @@ export default function AdminPanel() {
         setLoginError(data.error || "Incorrect password. Please try again.");
       }
     } catch (err) {
-      setLoginError("Failed to authenticate. Is the server running?");
+      console.error("Login error details:", err);
+      setLoginError(`Failed to authenticate: ${err instanceof Error ? err.message : String(err)}`);
     }
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem("gmr_admin_token");
+    removeSessionItem("gmr_admin_token");
     setIsAuthenticated(false);
   };
 
