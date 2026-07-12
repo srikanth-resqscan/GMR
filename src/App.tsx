@@ -5,6 +5,7 @@
 
 import React, { useState } from "react";
 import villaImg from "./assets/images/gmr_mukunda_villa_1783685666015.jpg";
+import premiumVillaBg from "./assets/images/villa_facade_premium_1783833565416.jpg";
 import clubhouseImg from "./assets/images/gmr_mukunda_clubhouse_1783685682359.jpg";
 import Header from "./components/Header";
 import AdminPanel from "./components/AdminPanel";
@@ -90,14 +91,14 @@ export default function App() {
             {/* Background image overlay with soft dark glass effects */}
             <div className="absolute inset-0 z-0">
               <img
-                src={villaImg}
-                alt="GMR Mukunda Luxury Triplex Villa Exterior"
-                className="w-full h-full object-cover opacity-25 object-center scale-105 filter brightness-75 transition-all duration-1000"
+                src={premiumVillaBg}
+                alt="GMR Mukunda Premium Triplex Villa Exterior Facade"
+                className="w-full h-full object-cover opacity-65 object-center scale-100 filter brightness-90 contrast-105 transition-all duration-1000"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-950/95 via-indigo-900/80 to-violet-950/95"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/75 to-slate-950/35"></div>
               {/* Immersive Theme Dotted Grid Background */}
-              <div className="absolute inset-0 bg-grid-pattern opacity-20 mix-blend-overlay"></div>
+              <div className="absolute inset-0 bg-grid-pattern opacity-10 mix-blend-overlay"></div>
             </div>
 
             <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 w-full">
@@ -110,7 +111,7 @@ export default function App() {
                   </span>
                   
                   <h1 className="text-5xl sm:text-7xl lg:text-8xl font-light tracking-tight leading-none text-white drop-shadow-md">
-                    LIVE <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-200 to-violet-300">WHOLEHEARTEDLY</span>
+                    GMR MUKUNDA <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-200 to-violet-300">VILLAS</span>
                   </h1>
                   
                   <p className="text-lg sm:text-2xl font-light text-blue-100 max-w-3xl tracking-wide font-sans leading-relaxed">
