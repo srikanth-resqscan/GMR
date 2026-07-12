@@ -30,7 +30,7 @@ export default function NearbyLocations() {
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case "education":
-        return <GraduationCap className="h-4.5 w-4.5 text-violet-600" />;
+        return <GraduationCap className="h-4.5 w-4.5 text-blue-600" />;
       case "healthcare":
         return <Hospital className="h-4.5 w-4.5 text-rose-600" />;
       case "transit":
@@ -38,14 +38,14 @@ export default function NearbyLocations() {
       case "industry":
         return <Briefcase className="h-4.5 w-4.5 text-emerald-600" />;
       default:
-        return <MapPin className="h-4.5 w-4.5 text-violet-600" />;
+        return <MapPin className="h-4.5 w-4.5 text-blue-600" />;
     }
   };
 
   const getCategoryColor = (category: string) => {
     switch (category) {
       case "education":
-        return "bg-violet-50 text-violet-700 border-violet-100";
+        return "bg-blue-50 text-blue-700 border-blue-100";
       case "healthcare":
         return "bg-rose-50 text-rose-700 border-rose-100";
       case "transit":
@@ -58,31 +58,31 @@ export default function NearbyLocations() {
   };
 
   return (
-    <div id="nearby_locations_panel" className="bg-white rounded-3xl border border-violet-100 shadow-xl overflow-hidden">
+    <div id="nearby_locations_panel" className="bg-white rounded-3xl border border-blue-100 shadow-xl overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-12">
         {/* Left Informative Panel */}
-        <div className="lg:col-span-5 bg-violet-950 p-8 sm:p-12 text-white flex flex-col justify-between">
+        <div className="lg:col-span-5 bg-gradient-to-br from-blue-950 via-indigo-950 to-violet-950 p-8 sm:p-12 text-white flex flex-col justify-between">
           <div>
-            <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/10 text-violet-200 uppercase tracking-widest block w-fit mb-6">
+            <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/10 text-blue-200 uppercase tracking-widest block w-fit mb-6">
               Strategic Proximity
             </span>
             <h3 className="text-3xl sm:text-4xl font-display font-bold leading-tight">
               An Address That Connects You Effortlessly
             </h3>
-            <p className="text-sm text-violet-200 mt-4 leading-relaxed">
+            <p className="text-sm text-blue-200 mt-4 leading-relaxed">
               Ideally positioned on the <strong>Hanamkonda-Hyderabad Highway</strong> (Rampur), GMR Mukunda is placed minutes from highly premium educational clusters, state-of-the-art super-specialty hospitals, and critical transport routes.
             </p>
           </div>
 
           <div className="mt-8 pt-8 border-t border-white/10 space-y-4">
-            <div className="flex items-start space-x-3 text-sm text-violet-100">
-              <MapPin className="h-5 w-5 text-violet-400 shrink-0 mt-0.5" />
+            <div className="flex items-start space-x-3 text-sm text-blue-100">
+              <MapPin className="h-5 w-5 text-blue-400 shrink-0 mt-0.5" />
               <span>
                 <strong>Site Address:</strong> Old Thushara PG College Premises, Beside Kapil Foods, Rampur, Hanamkonda.
               </span>
             </div>
-            <div className="flex items-center space-x-3 text-sm text-violet-100">
-              <Navigation className="h-4.5 w-4.5 text-violet-400 shrink-0" />
+            <div className="flex items-center space-x-3 text-sm text-blue-100">
+              <Navigation className="h-4.5 w-4.5 text-blue-400 shrink-0" />
               <span>Easy access to Hyderabad Highway & ORR</span>
             </div>
           </div>
@@ -103,7 +103,7 @@ export default function NearbyLocations() {
                   placeholder="Search schools, hospitals, transit..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9 pr-4 py-2 block w-full bg-white border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition-all outline-none"
+                  className="pl-9 pr-4 py-2 block w-full bg-white border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none"
                 />
               </div>
 
@@ -121,7 +121,7 @@ export default function NearbyLocations() {
                     onClick={() => setCategoryFilter(item.id as any)}
                     className={`px-3 py-1.5 rounded-lg text-[10px] font-semibold uppercase tracking-wider transition-all focus:outline-none cursor-pointer ${
                       categoryFilter === item.id
-                        ? "bg-white text-violet-950 shadow-sm font-bold"
+                        ? "bg-white text-blue-950 shadow-sm font-bold"
                         : "text-slate-500 hover:text-slate-800"
                     }`}
                   >
@@ -141,7 +141,7 @@ export default function NearbyLocations() {
                 filteredPlaces.map((place, idx) => (
                   <div
                     key={idx}
-                    className="bg-white p-3.5 rounded-xl border border-slate-200/60 shadow-sm flex items-center justify-between hover:border-violet-200 transition-colors"
+                    className="bg-white p-3.5 rounded-xl border border-slate-200/60 shadow-sm flex items-center justify-between hover:border-blue-200 transition-colors"
                   >
                     <div className="flex items-center space-x-3">
                       <div className={`p-2 rounded-lg ${getCategoryColor(place.category)} shrink-0`}>
@@ -157,7 +157,7 @@ export default function NearbyLocations() {
                       </div>
                     </div>
 
-                    <div className="flex items-center space-x-1.5 bg-violet-50 border border-violet-100 text-violet-800 font-mono text-xs font-bold px-2 py-1 rounded-lg shrink-0">
+                    <div className="flex items-center space-x-1.5 bg-blue-50 border border-blue-100 text-blue-800 font-mono text-xs font-bold px-2 py-1 rounded-lg shrink-0">
                       <Clock className="h-3 w-3" />
                       <span>{place.distance}</span>
                     </div>
@@ -169,7 +169,7 @@ export default function NearbyLocations() {
 
           <div className="mt-6 pt-6 border-t border-slate-200/60 flex items-center justify-between text-xs text-slate-500 font-medium">
             <span className="flex items-center">
-              <Compass className="h-4 w-4 mr-1.5 text-violet-600 animate-spin" />
+              <Compass className="h-4 w-4 mr-1.5 text-blue-600 animate-spin" />
               Calculated from Old Thushara PG College Premises, Rampur.
             </span>
           </div>

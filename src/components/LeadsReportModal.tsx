@@ -90,14 +90,14 @@ export default function LeadsReportModal({
         {/* Modal Header */}
         <div className="bg-slate-900 px-6 py-5 text-white flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center space-x-3">
-            <div className="p-2.5 bg-violet-600 rounded-xl">
+            <div className="p-2.5 bg-blue-600 rounded-xl">
               <FileText className="h-5 w-5 text-white" />
             </div>
             <div>
               <h3 className="font-sans font-bold text-lg leading-tight">
                 Executive Leads PDF Report
               </h3>
-              <p className="text-xs text-violet-300 font-medium">
+              <p className="text-xs text-blue-300 font-medium">
                 Generate and print structured client portfolios with 365-day validity status
               </p>
             </div>
@@ -114,7 +114,7 @@ export default function LeadsReportModal({
         {/* Modal Action Bar */}
         <div className="bg-slate-50 px-6 py-4 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <span className="inline-flex items-center space-x-1 px-3 py-1 bg-violet-50 text-violet-700 text-xs font-semibold rounded-full border border-violet-100">
+            <span className="inline-flex items-center space-x-1 px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full border border-blue-100">
               <Sparkles className="h-3.5 w-3.5 mr-1" />
               <span>Report contains {totalCount} filtered leads</span>
             </span>
@@ -125,7 +125,7 @@ export default function LeadsReportModal({
             onClick={handlePrint}
             className="flex items-center justify-center space-x-2 px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold rounded-xl shadow-lg transition-all duration-300 transform active:scale-98 cursor-pointer"
           >
-            <Printer className="h-4 w-4 text-violet-400" />
+            <Printer className="h-4 w-4 text-blue-400" />
             <span>Save to PDF / Print Report</span>
           </button>
         </div>
@@ -134,9 +134,9 @@ export default function LeadsReportModal({
         <div className="max-h-[60vh] overflow-y-auto p-6 sm:p-8 bg-slate-100/50">
           <div className="max-w-4xl mx-auto bg-white rounded-2xl border border-slate-200/80 shadow-md p-8 sm:p-12 space-y-8 font-sans text-slate-800">
             {/* Report Letterhead */}
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-2 border-violet-900 pb-6 gap-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-2 border-blue-900 pb-6 gap-4">
               <div>
-                <span className="font-mono text-xs font-bold text-violet-700 tracking-widest uppercase block mb-1">
+                <span className="font-mono text-xs font-bold text-blue-700 tracking-widest uppercase block mb-1">
                   OFFICIAL CRM DOCUMENT
                 </span>
                 <h1 className="text-3xl font-black text-slate-950 tracking-tight uppercase">
@@ -173,9 +173,9 @@ export default function LeadsReportModal({
 
             {/* Executive Summary Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-violet-50/50 border border-violet-100 rounded-xl p-4 text-center">
-                <span className="block text-[10px] font-mono font-bold text-violet-500 uppercase tracking-wider mb-1">Matching Leads</span>
-                <span className="text-2xl font-black text-violet-950 block">{totalCount}</span>
+              <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-4 text-center">
+                <span className="block text-[10px] font-mono font-bold text-blue-500 uppercase tracking-wider mb-1">Matching Leads</span>
+                <span className="text-2xl font-black text-blue-950 block">{totalCount}</span>
               </div>
               <div className="bg-emerald-50/50 border border-emerald-100 rounded-xl p-4 text-center">
                 <span className="block text-[10px] font-mono font-bold text-emerald-600 uppercase tracking-wider mb-1">Active (Valid)</span>
@@ -228,7 +228,7 @@ export default function LeadsReportModal({
                               <div className="text-[11px] text-slate-400 mt-0.5">{lead.email}</div>
                             )}
                           </td>
-                          <td className="px-4 py-3 font-medium text-violet-900">{lead.villaType}</td>
+                          <td className="px-4 py-3 font-medium text-blue-900">{lead.villaType}</td>
                           <td className="px-4 py-3 text-slate-500">
                             {new Date(lead.createdAt).toLocaleDateString()}
                           </td>

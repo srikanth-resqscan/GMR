@@ -205,12 +205,12 @@ export default function AdminPanel() {
   if (!isAuthenticated) {
     return (
       <div id="admin_login_view" className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-12">
-        <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-3xl shadow-xl border border-violet-100">
+        <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-3xl shadow-xl border border-blue-100">
           <div className="text-center">
-            <div className="mx-auto h-14 w-14 bg-violet-600 rounded-2xl flex items-center justify-center text-white mb-4 shadow-lg shadow-violet-200">
+            <div className="mx-auto h-14 w-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-200">
               <Lock className="h-6 w-6" />
             </div>
-            <h2 className="text-3xl font-display font-bold text-violet-950">Admin Workspace</h2>
+            <h2 className="text-3xl font-display font-bold text-blue-950">Admin Workspace</h2>
             <p className="mt-2 text-sm text-slate-500">
               Please authenticate to access lead details.
             </p>
@@ -233,7 +233,7 @@ export default function AdminPanel() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter admin password (gmr123)"
-                    className="pl-11 pr-4 py-3.5 block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-violet-500 text-sm focus:bg-white transition-all outline-none"
+                    className="pl-11 pr-4 py-3.5 block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm focus:bg-white transition-all outline-none"
                   />
                 </div>
               </div>
@@ -250,7 +250,7 @@ export default function AdminPanel() {
               <button
                 id="btn_admin_login_submit"
                 type="submit"
-                className="group relative w-full flex justify-center py-3.5 px-4 border border-transparent text-sm font-semibold rounded-xl text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 transition-all shadow-md shadow-violet-150 cursor-pointer"
+                className="group relative w-full flex justify-center py-3.5 px-4 border border-transparent text-sm font-semibold rounded-xl text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all shadow-md shadow-blue-150 cursor-pointer"
               >
                 Sign In to Dashboard
               </button>
@@ -267,10 +267,14 @@ export default function AdminPanel() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3 gap-2">
-              <h1 className="text-3xl font-display font-bold text-violet-950">GMR Mukunda Leads</h1>
-              <span className="inline-flex items-center w-fit px-3 py-1 rounded-full text-xs font-semibold bg-violet-100 text-violet-800 border border-violet-200">
+            <div className="flex flex-wrap items-center gap-2">
+              <h1 className="text-3xl font-display font-bold text-blue-950">GMR Mukunda Leads</h1>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 border border-blue-200">
                 Lead Validity: 365 Days
+              </span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span>
+                Supabase Cloud Active
               </span>
             </div>
             <p className="text-sm text-slate-500 mt-1.5">
@@ -282,7 +286,7 @@ export default function AdminPanel() {
             <button
               id="btn_refresh_leads"
               onClick={fetchLeads}
-              className="flex items-center space-x-1.5 px-4 py-2.5 rounded-xl border border-violet-200 text-violet-700 bg-violet-50 hover:bg-violet-100 font-semibold text-xs uppercase tracking-wider transition-all"
+              className="flex items-center space-x-1.5 px-4 py-2.5 rounded-xl border border-blue-200 text-blue-700 bg-blue-50 hover:bg-blue-100 font-semibold text-xs uppercase tracking-wider transition-all"
             >
               <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? "animate-spin" : ""}`} />
               <span>Refresh</span>
@@ -293,7 +297,7 @@ export default function AdminPanel() {
               onClick={() => setIsResetOpen(true)}
               className="flex items-center space-x-1.5 px-4 py-2.5 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-slate-50 font-semibold text-xs uppercase tracking-wider transition-all"
             >
-              <Lock className="h-3.5 w-3.5 text-violet-500" />
+              <Lock className="h-3.5 w-3.5 text-blue-500" />
               <span>Reset Passkey</span>
             </button>
 
@@ -311,14 +315,14 @@ export default function AdminPanel() {
         {/* Stats Grid */}
         <div id="admin_stats_grid" className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
           <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center space-x-4">
-            <div className="p-4 bg-violet-50 text-violet-600 rounded-xl">
+            <div className="p-4 bg-blue-50 text-blue-600 rounded-xl">
               <Users className="h-6 w-6" />
             </div>
             <div>
               <span className="block text-xs font-mono font-bold text-slate-400 uppercase tracking-widest">
                 Total Submissions
               </span>
-              <span className="block text-2xl font-bold font-display text-violet-950">
+              <span className="block text-2xl font-bold font-display text-blue-950">
                 {totalLeadsCount}
               </span>
             </div>
@@ -365,7 +369,7 @@ export default function AdminPanel() {
               placeholder="Search leads by name, phone, message..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-9 pr-4 py-2 w-full bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition-all outline-none"
+              className="pl-9 pr-4 py-2 w-full bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none"
             />
           </div>
 
@@ -375,7 +379,7 @@ export default function AdminPanel() {
                 id="select_status_filter"
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value as any)}
-                className="bg-slate-50 border border-slate-200 text-sm rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-violet-500 transition-all text-slate-700 font-medium"
+                className="bg-slate-50 border border-slate-200 text-sm rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500 transition-all text-slate-700 font-medium"
               >
                 <option value="all">All Statuses</option>
                 <option value="active">Active (365d validity)</option>
@@ -388,7 +392,7 @@ export default function AdminPanel() {
                 id="select_villa_filter"
                 value={villaFilter}
                 onChange={(e) => setVillaFilter(e.target.value)}
-                className="bg-slate-50 border border-slate-200 text-sm rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-violet-500 transition-all text-slate-700 font-medium"
+                className="bg-slate-50 border border-slate-200 text-sm rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500 transition-all text-slate-700 font-medium"
               >
                 <option value="all">All Villa Types</option>
                 {uniqueVillas.map((villa) => (
@@ -440,13 +444,13 @@ export default function AdminPanel() {
                       <tr key={lead.id} className="hover:bg-slate-50/50 transition-colors">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="font-semibold text-slate-900 text-sm">{lead.name}</div>
-                          <div className="text-xs text-violet-700 font-semibold">{lead.phone}</div>
+                          <div className="text-xs text-blue-700 font-semibold">{lead.phone}</div>
                           {lead.email && lead.email !== "N/A" && (
                             <div className="text-xs text-slate-500 mt-0.5">{lead.email}</div>
                           )}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-violet-50 text-violet-800 border border-violet-100">
+                          <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-800 border border-blue-100">
                             {lead.villaType}
                           </span>
                         </td>
@@ -484,7 +488,7 @@ export default function AdminPanel() {
                             <button
                               id={`btn_view_lead_${lead.id}`}
                               onClick={() => setSelectedLead(lead)}
-                              className="p-1.5 rounded-lg text-violet-600 hover:bg-violet-50 transition-all"
+                              className="p-1.5 rounded-lg text-blue-600 hover:bg-blue-50 transition-all"
                               title="View details"
                             >
                               <Eye className="h-4 w-4" />
@@ -510,10 +514,10 @@ export default function AdminPanel() {
       </div>
 
       {/* Admin Dashboard Operations Footer (Required) */}
-      <footer id="admin_dashboard_footer" className="fixed bottom-0 left-0 right-0 bg-white border-t border-violet-100 shadow-lg py-3 px-6 z-40">
+      <footer id="admin_dashboard_footer" className="fixed bottom-0 left-0 right-0 bg-white border-t border-blue-100 shadow-lg py-3 px-6 z-40">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 text-xs">
           <div className="flex items-center space-x-2 text-slate-500">
-            <span className="font-semibold text-violet-950 font-display">GMR MUKUNDA OPERATING FOOTER</span>
+            <span className="font-semibold text-blue-950 font-display">GMR MUKUNDA OPERATING FOOTER</span>
             <span className="text-slate-300">|</span>
             <span>Showing {filteredLeads.length} of {leads.length} leads</span>
           </div>
@@ -524,14 +528,14 @@ export default function AdminPanel() {
               onClick={() => setIsReportModalOpen(true)}
               className="flex items-center space-x-1.5 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-bold shadow-md cursor-pointer transition-colors"
             >
-              <FileText className="h-3.5 w-3.5 text-violet-400" />
+              <FileText className="h-3.5 w-3.5 text-blue-400" />
               <span>Export PDF Report</span>
             </button>
 
             <button
               id="btn_footer_export_csv"
               onClick={handleExportCSV}
-              className="flex items-center space-x-1.5 px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-lg font-bold shadow-md shadow-violet-100 cursor-pointer transition-colors"
+              className="flex items-center space-x-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold shadow-md shadow-blue-100 cursor-pointer transition-colors"
             >
               <Download className="h-3.5 w-3.5" />
               <span>Export CSV (Excel)</span>
@@ -543,11 +547,11 @@ export default function AdminPanel() {
       {/* Lead details Modal */}
       {selectedLead && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn">
-          <div className="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-violet-100 animate-slideUp">
-            <div className="bg-violet-950 text-white p-6 flex justify-between items-center">
+          <div className="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-blue-100 animate-slideUp">
+            <div className="bg-blue-950 text-white p-6 flex justify-between items-center">
               <div>
                 <h3 className="text-xl font-display font-bold">Inquiry Details</h3>
-                <p className="text-xs text-violet-200 mt-0.5">ID: {selectedLead.id}</p>
+                <p className="text-xs text-blue-200 mt-0.5">ID: {selectedLead.id}</p>
               </div>
               <button
                 id="btn_close_lead_details"
@@ -570,7 +574,7 @@ export default function AdminPanel() {
                   <span className="block text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest">
                     Phone Number
                   </span>
-                  <span className="text-sm font-semibold text-violet-700">{selectedLead.phone}</span>
+                  <span className="text-sm font-semibold text-blue-700">{selectedLead.phone}</span>
                 </div>
                 <div>
                   <span className="block text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest">
@@ -585,7 +589,7 @@ export default function AdminPanel() {
                   <span className="block text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest">
                     Villa Interest
                   </span>
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-violet-50 text-violet-800 border border-violet-100 mt-1">
+                  <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-100 mt-1">
                     {selectedLead.villaType}
                   </span>
                 </div>
@@ -632,7 +636,7 @@ export default function AdminPanel() {
               <button
                 id="btn_modal_close"
                 onClick={() => setSelectedLead(null)}
-                className="px-5 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-lg text-xs font-semibold shadow-md transition-colors"
+                className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-md transition-colors"
               >
                 Done
               </button>
@@ -644,11 +648,11 @@ export default function AdminPanel() {
       {/* Password Reset Modal (Inside Panel Option) */}
       {isResetOpen && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn">
-          <div className="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl border border-violet-100 animate-slideUp">
-            <div className="bg-violet-950 text-white p-6 flex justify-between items-center">
+          <div className="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl border border-blue-100 animate-slideUp">
+            <div className="bg-blue-950 text-white p-6 flex justify-between items-center">
               <div>
                 <h3 className="text-lg font-display font-bold">Update Passkey</h3>
-                <p className="text-xs text-violet-200 mt-0.5">Reset your admin portal entry password</p>
+                <p className="text-xs text-blue-200 mt-0.5">Reset your admin portal entry password</p>
               </div>
               <button
                 id="btn_close_password_reset"
@@ -674,7 +678,7 @@ export default function AdminPanel() {
                   required
                   value={oldPassword}
                   onChange={(e) => setOldPassword(e.target.value)}
-                  className="px-4 py-2.5 block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-violet-500 text-sm focus:bg-white transition-all outline-none"
+                  className="px-4 py-2.5 block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm focus:bg-white transition-all outline-none"
                   placeholder="Enter current password"
                 />
               </div>
@@ -689,7 +693,7 @@ export default function AdminPanel() {
                   required
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
-                  className="px-4 py-2.5 block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-violet-500 text-sm focus:bg-white transition-all outline-none"
+                  className="px-4 py-2.5 block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm focus:bg-white transition-all outline-none"
                   placeholder="At least 4 characters"
                 />
               </div>
@@ -704,7 +708,7 @@ export default function AdminPanel() {
                   required
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="px-4 py-2.5 block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-violet-500 text-sm focus:bg-white transition-all outline-none"
+                  className="px-4 py-2.5 block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm focus:bg-white transition-all outline-none"
                   placeholder="Re-enter new password"
                 />
               </div>
@@ -735,7 +739,7 @@ export default function AdminPanel() {
                 <button
                   id="btn_submit_reset"
                   type="submit"
-                  className="px-5 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-lg text-xs font-semibold shadow-md transition-colors cursor-pointer"
+                  className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-md transition-colors cursor-pointer"
                 >
                   Update Password
                 </button>

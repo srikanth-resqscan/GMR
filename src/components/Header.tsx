@@ -11,9 +11,10 @@ interface HeaderProps {
   onAdminClick: () => void;
   isAdminOpen: boolean;
   onOpenBrochure: () => void;
+  onOpenEnquiry?: () => void;
 }
 
-export default function Header({ onAdminClick, isAdminOpen, onOpenBrochure }: HeaderProps) {
+export default function Header({ onAdminClick, isAdminOpen, onOpenBrochure, onOpenEnquiry }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -43,7 +44,7 @@ export default function Header({ onAdminClick, isAdminOpen, onOpenBrochure }: He
       id="header_main"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-md py-4 border-b border-violet-100"
+          ? "bg-white/95 backdrop-blur-md shadow-md py-4 border-b border-blue-100"
           : "bg-gradient-to-b from-black/50 via-black/20 to-transparent text-white py-6"
       }`}
     >
@@ -55,20 +56,20 @@ export default function Header({ onAdminClick, isAdminOpen, onOpenBrochure }: He
             onClick={() => handleNavClick("home_hero")}
             className="flex items-center space-x-3 text-left focus:outline-none group"
           >
-            <div className="p-2.5 bg-violet-600 rounded-xl text-white shadow-md group-hover:bg-violet-700 transition-colors">
+            <div className="p-2.5 bg-gradient-to-r from-blue-600 to-violet-600 rounded-xl text-white shadow-md hover:from-blue-700 hover:to-violet-700 transition-colors">
               <Building2 className="h-6 w-6" />
             </div>
             <div>
               <span
                 className={`font-display text-2xl font-bold tracking-tight block ${
-                  isScrolled ? "text-violet-950" : "text-white"
+                  isScrolled ? "text-blue-950" : "text-white"
                 }`}
               >
                 {PROJECT_INFO.name}
               </span>
               <span
                 className={`text-[9px] font-mono tracking-widest uppercase block -mt-1 ${
-                  isScrolled ? "text-violet-600 font-semibold" : "text-violet-200"
+                  isScrolled ? "text-blue-600 font-semibold" : "text-blue-200"
                 }`}
               >
                 {PROJECT_INFO.tagline}
@@ -93,12 +94,12 @@ export default function Header({ onAdminClick, isAdminOpen, onOpenBrochure }: He
                 onClick={() => handleNavClick(item.target)}
                 className={`transition-colors relative py-1 focus:outline-none group cursor-pointer ${
                   isScrolled
-                    ? "text-slate-600 hover:text-violet-800"
+                    ? "text-slate-600 hover:text-blue-700"
                     : "text-white/90 hover:text-white"
                 }`}
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-violet-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </nav>
@@ -108,9 +109,9 @@ export default function Header({ onAdminClick, isAdminOpen, onOpenBrochure }: He
             <button
               id="btn_header_brochure_pdf_cta"
               onClick={onOpenBrochure}
-              className={`flex items-center space-x-1.5 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all hover:bg-violet-50 hover:text-violet-950 focus:outline-none cursor-pointer border ${
+              className={`flex items-center space-x-1.5 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all hover:bg-blue-50 hover:text-blue-950 focus:outline-none cursor-pointer border ${
                 isScrolled
-                  ? "border-violet-200 text-violet-700 bg-violet-50/50 hover:bg-violet-100"
+                  ? "border-blue-200 text-blue-700 bg-blue-50/50 hover:bg-blue-100"
                   : "border-white/25 text-white bg-white/5 hover:bg-white/10"
               }`}
             >
@@ -120,11 +121,11 @@ export default function Header({ onAdminClick, isAdminOpen, onOpenBrochure }: He
 
             <button
               id="btn_header_contact_cta"
-              onClick={() => handleNavClick("contact_section")}
-              className={`flex items-center space-x-1 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-violet-200 focus:outline-none ${
+              onClick={onOpenEnquiry ? onOpenEnquiry : () => handleNavClick("contact_section")}
+              className={`flex items-center space-x-1 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-blue-200 focus:outline-none ${
                 isScrolled
-                  ? "bg-violet-600 hover:bg-violet-700 text-white"
-                  : "bg-white text-violet-950 hover:bg-violet-50"
+                  ? "bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white"
+                  : "bg-white text-blue-950 hover:bg-blue-50"
               }`}
             >
               <span>Enquire Now</span>
@@ -137,7 +138,7 @@ export default function Header({ onAdminClick, isAdminOpen, onOpenBrochure }: He
             <button
               id="btn_hamburger_toggle"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 ${
+              className={`p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                 isScrolled ? "text-slate-700" : "text-white"
               }`}
             >
@@ -151,7 +152,7 @@ export default function Header({ onAdminClick, isAdminOpen, onOpenBrochure }: He
       {isMobileMenuOpen && (
         <div
           id="nav_mobile_drawer"
-          className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-violet-100 shadow-xl py-6 px-4 animate-fadeIn"
+          className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-blue-100 shadow-xl py-6 px-4 animate-fadeIn"
         >
           <div className="flex flex-col space-y-4">
             {[
@@ -167,12 +168,12 @@ export default function Header({ onAdminClick, isAdminOpen, onOpenBrochure }: He
                 id={`nav_mobile_link_${item.target}`}
                 key={item.target}
                 onClick={() => handleNavClick(item.target)}
-                className="text-left py-2 px-3 text-base font-semibold text-slate-800 hover:bg-violet-50 hover:text-violet-700 rounded-lg transition-all"
+                className="text-left py-2 px-3 text-base font-semibold text-slate-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all"
               >
                 {item.label}
               </button>
             ))}
-            <div className="h-px bg-violet-100 my-2"></div>
+            <div className="h-px bg-blue-100 my-2"></div>
             <div className="pt-2 space-y-2">
               <button
                 id="btn_mobile_brochure_cta"
@@ -182,14 +183,14 @@ export default function Header({ onAdminClick, isAdminOpen, onOpenBrochure }: He
                 }}
                 className="w-full flex items-center justify-center space-x-2 py-3 bg-slate-50 border border-slate-200 text-slate-800 hover:bg-slate-100 rounded-xl font-semibold cursor-pointer"
               >
-                <FileText className="h-4 w-4 text-violet-600" />
+                <FileText className="h-4 w-4 text-blue-600" />
                 <span>Brochure PDF / Floorplans</span>
               </button>
 
               <button
                 id="btn_mobile_enquiry_cta"
-                onClick={() => handleNavClick("contact_section")}
-                className="w-full text-center py-3 bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-semibold shadow-md shadow-violet-100"
+                onClick={onOpenEnquiry ? () => { setIsMobileMenuOpen(false); onOpenEnquiry(); } : () => handleNavClick("contact_section")}
+                className="w-full text-center py-3 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white rounded-xl font-semibold shadow-md shadow-blue-100"
               >
                 Enquire Now
               </button>

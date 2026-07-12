@@ -72,14 +72,14 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
 
   if (submitSuccess) {
     return (
-      <div id="lead_success_message" className="bg-white/95 border border-violet-100 p-8 sm:p-12 rounded-3xl shadow-xl text-center space-y-6 animate-fadeIn">
+      <div id="lead_success_message" className="bg-white/95 border border-blue-100 p-8 sm:p-12 rounded-3xl shadow-xl text-center space-y-6 animate-fadeIn">
         <div className="mx-auto h-16 w-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-50">
           <CheckCircle className="h-10 w-10" />
         </div>
         <div className="space-y-2">
-          <h3 className="text-2xl sm:text-3xl font-display font-bold text-violet-950">Inquiry Received!</h3>
+          <h3 className="text-2xl sm:text-3xl font-display font-bold text-blue-950">Inquiry Received!</h3>
           <p className="text-slate-500 text-sm max-w-md mx-auto">
-            Thank you for choosing GMR Mukunda. Our dedicated relationship manager from GBR Homes LLP will contact you on <span className="font-semibold text-violet-700">{phone}</span> within 2 hours.
+            Thank you for choosing GMR Mukunda. Our dedicated relationship manager from GBR Homes LLP will contact you on <span className="font-semibold text-blue-700">{phone}</span> within 2 hours.
           </p>
         </div>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2">
@@ -87,7 +87,7 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
             <button
               id="btn_success_download_brochure"
               onClick={onOpenBrochure}
-              className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white font-bold rounded-xl text-sm transition-all shadow-lg shadow-violet-200 cursor-pointer hover:scale-[1.01]"
+              className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white font-bold rounded-xl text-sm transition-all shadow-lg shadow-blue-200 cursor-pointer hover:scale-[1.01]"
             >
               <FileText className="h-4.5 w-4.5" />
               <span>Download PDF Brochure</span>
@@ -112,12 +112,12 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
 
   return (
     <div id="lead_form_panel" className="bg-white p-8 sm:p-12 rounded-2xl border border-slate-100 shadow-2xl shadow-slate-100/50 relative overflow-hidden">
-      {/* Decorative violet border bar */}
-      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-violet-400 via-violet-600 to-fuchsia-500"></div>
+      {/* Decorative blue-violet gradient border bar */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-400 via-blue-600 to-violet-600"></div>
 
       <div className="mb-10">
         <h3 className="text-3xl font-light text-slate-900 tracking-tight leading-tight">
-          Schedule a <span className="font-black text-violet-700">VIP Site Visit</span>
+          Schedule a <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">VIP Site Visit</span>
         </h3>
         <p className="text-xs sm:text-sm text-slate-500 mt-2 font-sans">
           Experience the 12.5-acre luxury community. Fill out the secure form, and GBR Homes will prepare your personalized villa brochure.
@@ -140,7 +140,7 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
               placeholder="e.g. Srikanth Rao"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 text-sm focus:bg-white transition-all duration-300 outline-none font-sans text-slate-900"
+              className="pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm focus:bg-white transition-all duration-300 outline-none font-sans text-slate-900"
             />
           </div>
         </div>
@@ -161,7 +161,7 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
                 placeholder="e.g. 9704707976"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 text-sm focus:bg-white transition-all duration-300 outline-none font-sans text-slate-900"
+                className="pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm focus:bg-white transition-all duration-300 outline-none font-sans text-slate-900"
               />
             </div>
           </div>
@@ -180,7 +180,7 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
                 placeholder="e.g. srikanth@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 text-sm focus:bg-white transition-all duration-300 outline-none font-sans text-slate-900"
+                className="pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm focus:bg-white transition-all duration-300 outline-none font-sans text-slate-900"
               />
             </div>
           </div>
@@ -198,7 +198,7 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
               id="select_lead_villa_type"
               value={villaType}
               onChange={(e) => setVillaType(e.target.value)}
-              className="pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 text-sm focus:bg-white transition-all duration-300 outline-none text-slate-700 font-sans"
+              className="pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm focus:bg-white transition-all duration-300 outline-none text-slate-700 font-sans"
             >
               <option value="General Inquiry">General Inquiry</option>
               <option value="East Facing Triplex Villa (3610 Sft)">East Facing Triplex Villa (3610 Sft)</option>
@@ -223,7 +223,7 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
               placeholder="Would love to schedule a visit this Saturday at 11:00 AM..."
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 text-sm focus:bg-white transition-all duration-300 outline-none resize-none font-sans text-slate-900"
+              className="pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm focus:bg-white transition-all duration-300 outline-none resize-none font-sans text-slate-900"
             />
           </div>
         </div>
@@ -238,7 +238,7 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
           id="btn_submit_lead_form"
           type="submit"
           disabled={isSubmitting}
-          className="w-full flex justify-center items-center space-x-2 py-4 bg-violet-600 hover:bg-violet-700 disabled:bg-violet-400 text-white font-bold rounded-lg text-sm transition-all duration-300 shadow-lg shadow-violet-200 cursor-pointer hover:scale-[1.01]"
+          className="w-full flex justify-center items-center space-x-2 py-4 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 disabled:from-blue-400 disabled:to-violet-400 text-white font-bold rounded-lg text-sm transition-all duration-300 shadow-lg shadow-blue-100 cursor-pointer hover:scale-[1.01]"
         >
           {isSubmitting ? (
             <>

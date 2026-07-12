@@ -360,7 +360,7 @@ export default function VirtualTour() {
   return (
     <section id="virtual_tour_section" className="py-24 bg-gradient-to-b from-slate-900 to-slate-950 text-white relative overflow-hidden">
       {/* Decorative ambient gradients */}
-      <div className="absolute top-1/4 left-1/10 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/10 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-1/4 right-1/10 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
 
@@ -368,12 +368,12 @@ export default function VirtualTour() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 bg-violet-900/50 text-violet-300 rounded-md text-xs font-bold uppercase tracking-widest mb-4 border border-violet-800/40">
-            <Video className="h-3.5 w-3.5 text-violet-400" />
+          <div className="inline-flex items-center space-x-2 px-3 py-1 bg-blue-900/50 text-blue-300 rounded-md text-xs font-bold uppercase tracking-widest mb-4 border border-blue-800/40">
+            <Video className="h-3.5 w-3.5 text-blue-400" />
             <span>Interactive 2D Experience</span>
           </div>
           <h2 className="text-4xl sm:text-6xl font-light leading-none tracking-tight">
-            GMR Mukunda <span className="font-black text-violet-400">Virtual Tour</span>
+            GMR Mukunda <span className="font-black text-blue-400">Virtual Tour</span>
           </h2>
           <p className="text-slate-400 text-sm mt-4">
             Explore our architectural layout blueprint. Instantly walk through community zones and review Vastu compliance in detailed room-by-room floor plans.
@@ -387,7 +387,7 @@ export default function VirtualTour() {
                 onClick={() => setActiveTab("community")}
                 className={`flex items-center space-x-2 px-6 py-3 rounded-xl text-xs font-bold tracking-wider uppercase transition-all cursor-pointer ${
                   activeTab === "community"
-                    ? "bg-violet-600 text-white shadow-lg shadow-violet-600/20"
+                    ? "bg-gradient-to-r from-blue-600 to-violet-600 text-white shadow-lg shadow-blue-200"
                     : "text-slate-400 hover:text-white hover:bg-slate-800"
                 }`}
               >
@@ -404,7 +404,7 @@ export default function VirtualTour() {
                 }}
                 className={`flex items-center space-x-2 px-6 py-3 rounded-xl text-xs font-bold tracking-wider uppercase transition-all cursor-pointer ${
                   activeTab === "villa"
-                    ? "bg-violet-600 text-white shadow-lg shadow-violet-600/20"
+                    ? "bg-gradient-to-r from-blue-600 to-violet-600 text-white shadow-lg shadow-blue-200"
                     : "text-slate-400 hover:text-white hover:bg-slate-800"
                 }`}
               >
@@ -445,13 +445,13 @@ export default function VirtualTour() {
                     key={h.id}
                     onClick={() => setActiveHotspot(h)}
                     style={{ top: h.top, left: h.left }}
-                    className="absolute p-2 rounded-full bg-violet-600/80 hover:bg-violet-500 border-2 border-white shadow-lg shadow-violet-600/50 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-300 hover:scale-125 focus:outline-none group/btn animate-pulse"
+                    className="absolute p-2 rounded-full bg-blue-600/80 hover:bg-blue-500 border-2 border-white shadow-lg shadow-blue-500/50 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-300 hover:scale-125 focus:outline-none group/btn animate-pulse"
                     title={h.name}
                   >
                     <Eye className="h-4 w-4 text-white" />
                     
                     {/* Ring animation */}
-                    <span className="absolute inset-0 rounded-full border-2 border-violet-400 animate-ping opacity-75"></span>
+                    <span className="absolute inset-0 rounded-full border-2 border-blue-400 animate-ping opacity-75"></span>
                     
                     {/* Tooltip on Hover */}
                     <span className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded shadow border border-slate-700 whitespace-nowrap opacity-0 group-hover/btn:opacity-100 transition-opacity">
@@ -462,13 +462,13 @@ export default function VirtualTour() {
 
                 {/* Hotspot detail overlay popover */}
                 {activeHotspot && (
-                  <div className="absolute bottom-6 left-6 right-6 bg-slate-900/95 backdrop-blur-md p-5 rounded-xl border border-violet-500/30 text-white shadow-2xl animate-fadeIn z-20">
+                  <div className="absolute bottom-6 left-6 right-6 bg-slate-900/95 backdrop-blur-md p-5 rounded-xl border border-blue-500/30 text-white shadow-2xl animate-fadeIn z-20">
                     <div className="flex justify-between items-start">
                       <div>
-                        <span className="inline-block px-2 py-0.5 bg-violet-900/60 text-violet-300 border border-violet-800 text-[9px] font-mono uppercase rounded mb-1.5">
+                        <span className="inline-block px-2 py-0.5 bg-blue-900/60 text-blue-300 border border-blue-800 text-[9px] font-mono uppercase rounded mb-1.5">
                           {activeHotspot.tag} Point
                         </span>
-                        <h4 className="font-sans font-bold text-base text-violet-300">
+                        <h4 className="font-sans font-bold text-base text-blue-300">
                           {activeHotspot.title}
                         </h4>
                       </div>
@@ -489,7 +489,7 @@ export default function VirtualTour() {
 
               {/* Interaction Guide */}
               <div className="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 flex items-center space-x-3 text-xs text-slate-400">
-                <Info className="h-5 w-5 text-violet-400 shrink-0" />
+                <Info className="h-5 w-5 text-blue-400 shrink-0" />
                 <span>Click the pulsing purple <strong>Eye Hotspots</strong> on the image to view specifications, architectural highlights, and built detail portfolios.</span>
               </div>
             </div>
@@ -513,12 +513,12 @@ export default function VirtualTour() {
                       }}
                       className={`w-full text-left p-4 rounded-xl transition-all border cursor-pointer flex items-center justify-between ${
                         selectedZoneId === z.id
-                          ? "bg-violet-950/40 border-violet-500/50 shadow-inner"
+                          ? "bg-blue-950/40 border-blue-500/50 shadow-inner"
                           : "bg-slate-900/30 border-slate-800/80 hover:bg-slate-900/60"
                       }`}
                     >
                       <div className="flex items-center space-x-3">
-                        <div className={`p-2 rounded-lg ${selectedZoneId === z.id ? "bg-violet-600 text-white" : "bg-slate-800 text-slate-400"}`}>
+                        <div className={`p-2 rounded-lg ${selectedZoneId === z.id ? "bg-gradient-to-r from-blue-600 to-violet-600 text-white" : "bg-slate-800 text-slate-400"}`}>
                           <MapPin className="h-4.5 w-4.5" />
                         </div>
                         <div>
@@ -526,7 +526,7 @@ export default function VirtualTour() {
                           <span className="text-[10px] text-slate-400 block mt-0.5">{z.tagline}</span>
                         </div>
                       </div>
-                      <span className={`text-[10px] font-mono font-bold uppercase ${selectedZoneId === z.id ? "text-violet-400" : "text-slate-500"}`}>
+                      <span className={`text-[10px] font-mono font-bold uppercase ${selectedZoneId === z.id ? "text-blue-400" : "text-slate-500"}`}>
                         {selectedZoneId === z.id ? "Active" : "View"}
                       </span>
                     </button>
@@ -537,7 +537,7 @@ export default function VirtualTour() {
               {/* Highlight Details */}
               <div className="bg-slate-900/40 p-6 rounded-2xl border border-slate-800/80 space-y-5">
                 <div>
-                  <h4 className="text-lg font-bold text-violet-300 font-sans">
+                  <h4 className="text-lg font-bold text-blue-300 font-sans">
                     {currentZone.name}
                   </h4>
                   <p className="text-xs text-slate-300 mt-2 leading-relaxed">
@@ -606,7 +606,7 @@ export default function VirtualTour() {
                       }}
                       className={`py-3.5 px-2 rounded-xl text-center border cursor-pointer transition-all ${
                         selectedFloorId === f.id
-                          ? "bg-violet-950/40 border-violet-500 text-white shadow-inner"
+                          ? "bg-blue-950/40 border-blue-500 text-white shadow-inner"
                           : "bg-slate-900/30 border-slate-800/80 text-slate-400 hover:text-white"
                       }`}
                     >
@@ -621,7 +621,7 @@ export default function VirtualTour() {
               <div className="bg-slate-900/60 p-5 rounded-2xl border border-slate-800/80">
                 <h3 className="font-sans font-bold text-xs text-slate-400 uppercase tracking-wider mb-4 flex items-center justify-between">
                   <span>Interactive 2D Blueprint</span>
-                  <span className="text-[10px] bg-violet-900/60 text-violet-300 border border-violet-800 px-2 py-0.5 rounded uppercase font-mono">
+                  <span className="text-[10px] bg-blue-900/60 text-blue-300 border border-blue-800 px-2 py-0.5 rounded uppercase font-mono">
                     {currentFloor.name}
                   </span>
                 </h3>
@@ -643,7 +643,7 @@ export default function VirtualTour() {
                           onClick={() => setSelectedRoomId(room.id)}
                           className={`col-span-12 relative flex flex-col justify-center items-center p-3.5 rounded-xl border-2 transition-all cursor-pointer ${
                             isSelected
-                              ? "bg-violet-950/50 border-violet-500/80 text-white shadow-lg shadow-violet-950/40 scale-[1.01]"
+                              ? "bg-blue-950/50 border-blue-500/80 text-white shadow-lg shadow-blue-950/40 scale-[1.01]"
                               : "bg-slate-900/40 border-slate-800/80 text-slate-400 hover:border-slate-700/80 hover:bg-slate-900/60"
                           }`}
                         >
@@ -652,7 +652,7 @@ export default function VirtualTour() {
                           <span className="block text-[10px] font-mono text-slate-500 mt-0.5">{room.dimensions}</span>
                           
                           {isSelected && (
-                            <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-violet-400 animate-pulse"></span>
+                            <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span>
                           )}
                         </button>
                       );
@@ -687,7 +687,7 @@ export default function VirtualTour() {
                       <h4 className="text-xl sm:text-2xl font-black font-sans tracking-tight text-white">
                         {currentRoom.name}
                       </h4>
-                      <p className="text-xs text-violet-400 font-mono mt-0.5">
+                      <p className="text-xs text-blue-400 font-mono mt-0.5">
                         Blueprint Dimensions: <span className="text-white font-bold">{currentRoom.dimensions}</span>
                       </p>
                     </div>
@@ -704,12 +704,12 @@ export default function VirtualTour() {
                 </div>
 
                 {/* Vastu Science Compliance block */}
-                <div className="bg-gradient-to-r from-violet-950/20 to-violet-900/10 border border-violet-800/25 rounded-2xl p-5 flex items-start space-x-4">
-                  <div className="p-2.5 bg-violet-600/20 rounded-xl text-violet-400 border border-violet-800/30">
+                <div className="bg-gradient-to-r from-blue-950/20 to-blue-900/10 border border-blue-800/25 rounded-2xl p-5 flex items-start space-x-4">
+                  <div className="p-2.5 bg-blue-600/20 rounded-xl text-blue-400 border border-blue-800/30">
                     <Compass className="h-5 w-5" />
                   </div>
                   <div>
-                    <h5 className="text-xs font-mono font-bold text-violet-300 uppercase tracking-widest">
+                    <h5 className="text-xs font-mono font-bold text-blue-300 uppercase tracking-widest">
                       Vastu Compliant Placement: {currentRoom.vastu.direction}
                     </h5>
                     <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
@@ -747,7 +747,7 @@ export default function VirtualTour() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {currentRoom.highlights.map((h, i) => (
                       <div key={i} className="bg-slate-900/30 p-4 rounded-xl border border-slate-800/50 flex items-start space-x-2.5">
-                        <CheckCircle className="h-4.5 w-4.5 text-violet-400 shrink-0 mt-0.5" />
+                        <CheckCircle className="h-4.5 w-4.5 text-blue-400 shrink-0 mt-0.5" />
                         <span className="text-xs text-slate-300 leading-normal">{h}</span>
                       </div>
                     ))}

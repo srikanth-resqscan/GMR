@@ -52,14 +52,14 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
         {/* Modal Header */}
         <div className="bg-slate-900 px-6 py-5 text-white flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center space-x-3">
-            <div className="p-2.5 bg-violet-600 rounded-xl">
+            <div className="p-2.5 bg-blue-600 rounded-xl">
               <FileText className="h-5 w-5 text-white" />
             </div>
             <div>
               <h3 className="font-sans font-bold text-lg leading-tight">
                 Original Layout & Villa Brochure PDF
               </h3>
-              <p className="text-xs text-violet-300 font-medium">
+              <p className="text-xs text-blue-300 font-medium">
                 Official high-resolution print-ready brochure & floor plans
               </p>
             </div>
@@ -99,7 +99,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
           <button
             id="btn_trigger_brochure_print"
             onClick={handlePrint}
-            className="flex items-center justify-center space-x-2 px-6 py-2.5 bg-violet-600 hover:bg-violet-700 text-white text-sm font-bold rounded-lg shadow-lg shadow-violet-200 transition-all duration-300 transform active:scale-98 cursor-pointer"
+            className="flex items-center justify-center space-x-2 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-lg shadow-lg shadow-blue-200 transition-all duration-300 transform active:scale-98 cursor-pointer"
           >
             <Printer className="h-4 w-4" />
             <span>Print or Save to PDF</span>
@@ -110,9 +110,9 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
         <div className="max-h-[65vh] overflow-y-auto p-6 sm:p-8 bg-slate-50/50">
           {activeTab === "printInfo" ? (
             <div id="pdf_instructions_panel" className="max-w-2xl mx-auto space-y-6 py-4">
-              <div className="bg-violet-50 border border-violet-100 rounded-2xl p-6 space-y-4">
-                <h4 className="font-sans font-bold text-violet-950 flex items-center space-x-2 text-base">
-                  <Sparkles className="h-5 w-5 text-violet-600 animate-pulse" />
+              <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6 space-y-4">
+                <h4 className="font-sans font-bold text-blue-950 flex items-center space-x-2 text-base">
+                  <Sparkles className="h-5 w-5 text-blue-600 animate-pulse" />
                   <span>Interactive PDF Generation Guide</span>
                 </h4>
                 <p className="text-sm text-slate-600 leading-relaxed">
@@ -120,27 +120,27 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
                 </p>
                 <div className="space-y-3.5 text-sm text-slate-700">
                   <div className="flex items-start space-x-3">
-                    <div className="h-6 w-6 rounded-full bg-violet-200 text-violet-800 font-mono text-xs font-bold flex items-center justify-center shrink-0">1</div>
+                    <div className="h-6 w-6 rounded-full bg-blue-200 text-blue-800 font-mono text-xs font-bold flex items-center justify-center shrink-0">1</div>
                     <span className="leading-relaxed">
-                      Click the <strong className="text-violet-700 font-bold">Print or Save to PDF</strong> button above.
+                      Click the <strong className="text-blue-700 font-bold">Print or Save to PDF</strong> button above.
                     </span>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="h-6 w-6 rounded-full bg-violet-200 text-violet-800 font-mono text-xs font-bold flex items-center justify-center shrink-0">2</div>
+                    <div className="h-6 w-6 rounded-full bg-blue-200 text-blue-800 font-mono text-xs font-bold flex items-center justify-center shrink-0">2</div>
                     <span className="leading-relaxed">
-                      In the print prompt, choose <strong className="text-violet-700 font-bold">Save as PDF</strong> as your "Destination" or "Printer".
+                      In the print prompt, choose <strong className="text-blue-700 font-bold">Save as PDF</strong> as your "Destination" or "Printer".
                     </span>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="h-6 w-6 rounded-full bg-violet-200 text-violet-800 font-mono text-xs font-bold flex items-center justify-center shrink-0">3</div>
+                    <div className="h-6 w-6 rounded-full bg-blue-200 text-blue-800 font-mono text-xs font-bold flex items-center justify-center shrink-0">3</div>
                     <span className="leading-relaxed">
-                      Expand "More settings" (or layout settings) and verify that <strong className="text-violet-700 font-bold">Background graphics</strong> is checked/enabled. This renders the premium violet styling and original villa images correctly.
+                      Expand "More settings" (or layout settings) and verify that <strong className="text-blue-700 font-bold">Background graphics</strong> is checked/enabled. This renders the premium violet styling and original villa images correctly.
                     </span>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="h-6 w-6 rounded-full bg-violet-200 text-violet-800 font-mono text-xs font-bold flex items-center justify-center shrink-0">4</div>
+                    <div className="h-6 w-6 rounded-full bg-blue-200 text-blue-800 font-mono text-xs font-bold flex items-center justify-center shrink-0">4</div>
                     <span className="leading-relaxed">
-                      Set margins to <strong className="text-violet-700 font-bold">None</strong> or "Default" for the cleanest bleed-to-edge layout.
+                      Set margins to <strong className="text-blue-700 font-bold">None</strong> or "Default" for the cleanest bleed-to-edge layout.
                     </span>
                   </div>
                 </div>
@@ -159,7 +159,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
           ) : (
             <div id="interactive_digital_brochure_reader" className="space-y-12">
               <div className="text-center max-w-lg mx-auto mb-6">
-                <span className="text-[11px] font-mono font-bold text-violet-600 bg-violet-100/60 px-3 py-1 rounded-md uppercase tracking-wider">
+                <span className="text-[11px] font-mono font-bold text-blue-600 bg-blue-100/60 px-3 py-1 rounded-md uppercase tracking-wider">
                   Digital Document Preview
                 </span>
                 <p className="text-slate-500 text-xs mt-2 leading-relaxed">
@@ -174,11 +174,11 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
                 </span>
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pt-4">
                   <div className="md:col-span-5 space-y-6">
-                    <div className="p-3 bg-violet-100 text-violet-700 rounded-2xl w-fit">
+                    <div className="p-3 bg-blue-100 text-blue-700 rounded-2xl w-fit">
                       <Building className="h-7 w-7" />
                     </div>
                     <div className="space-y-2">
-                      <span className="text-[10px] font-mono font-black text-violet-600 uppercase tracking-widest block">
+                      <span className="text-[10px] font-mono font-black text-blue-600 uppercase tracking-widest block">
                         {PROJECT_INFO.developer} PRESENTATION
                       </span>
                       <h4 className="text-4xl font-black text-slate-950 tracking-tight leading-none uppercase">
@@ -212,7 +212,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
                     <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <span className="text-[9px] font-mono tracking-widest font-bold text-violet-300 uppercase block">
+                      <span className="text-[9px] font-mono tracking-widest font-bold text-blue-300 uppercase block">
                         Original Rendering
                       </span>
                       <h5 className="font-bold text-sm">GMR Mukunda Triplex Villa Facade</h5>
@@ -230,7 +230,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
                 <div className="space-y-6 pt-4">
                   <div className="border-b border-slate-100 pb-4">
                     <h4 className="text-xl font-bold text-slate-950 tracking-tight flex items-center space-x-2">
-                      <Map className="h-5 w-5 text-violet-600" />
+                      <Map className="h-5 w-5 text-blue-600" />
                       <span>Official Layout Matrix & Area Matrix</span>
                     </h4>
                     <p className="text-xs text-slate-500 mt-1">
@@ -255,7 +255,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
                             <td className="px-4 py-3 font-bold text-slate-900">{v.facing} Facing Triplex</td>
                             <td className="px-4 py-3 text-slate-500 font-mono">{v.plotSize}</td>
                             <td className="px-4 py-3 text-slate-500 font-medium">{v.plotArea}</td>
-                            <td className="px-4 py-3 text-right font-bold text-violet-700 font-mono">{v.totalArea}</td>
+                            <td className="px-4 py-3 text-right font-bold text-blue-700 font-mono">{v.totalArea}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -265,7 +265,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
                   {/* Floor Plan Breakdown Details */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     <div className="bg-slate-50 p-4.5 rounded-xl border border-slate-100 space-y-3">
-                      <span className="text-[10px] font-mono font-bold text-violet-700 bg-violet-50 border border-violet-100 px-2.5 py-1 rounded-md block w-fit uppercase">
+                      <span className="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-md block w-fit uppercase">
                         Typical East Facing (3,610 Sft)
                       </span>
                       <ul className="space-y-2 text-xs text-slate-600">
@@ -276,7 +276,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
                     </div>
 
                     <div className="bg-slate-50 p-4.5 rounded-xl border border-slate-100 space-y-3">
-                      <span className="text-[10px] font-mono font-bold text-violet-700 bg-violet-50 border border-violet-100 px-2.5 py-1 rounded-md block w-fit uppercase">
+                      <span className="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-md block w-fit uppercase">
                         Typical West Facing (3,580 Sft)
                       </span>
                       <ul className="space-y-2 text-xs text-slate-600">
@@ -305,7 +305,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
                     <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <span className="text-[9px] font-mono tracking-widest font-bold text-violet-300 uppercase block">
+                      <span className="text-[9px] font-mono tracking-widest font-bold text-blue-300 uppercase block">
                         Original Rendering
                       </span>
                       <h5 className="font-bold text-sm">GMR Mukunda 5-Level Clubhouse Facade</h5>
@@ -314,7 +314,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
 
                   <div className="md:col-span-5 space-y-5">
                     <div className="space-y-1">
-                      <span className="text-[10px] font-mono font-bold text-violet-600 uppercase tracking-widest block">
+                      <span className="text-[10px] font-mono font-bold text-blue-600 uppercase tracking-widest block">
                         SOCIAL HUB
                       </span>
                       <h4 className="text-xl font-bold text-slate-950 tracking-tight leading-none uppercase">
@@ -353,7 +353,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-3.5">
-                      <h5 className="text-xs font-bold text-violet-700 uppercase tracking-wider font-mono">Premium Materials</h5>
+                      <h5 className="text-xs font-bold text-blue-700 uppercase tracking-wider font-mono">Premium Materials</h5>
                       <div className="space-y-2 text-xs text-slate-600">
                         <p><strong>Structure:</strong> MIVAN high-precision Monolithic Shear Walls (earthquake resistant Zone 2).</p>
                         <p><strong>Flooring:</strong> 1200mm x 1800mm Glazed Vitrified Tiles of premium brand in all key rooms.</p>
@@ -363,7 +363,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
                     </div>
 
                     <div className="space-y-3.5">
-                      <h5 className="text-xs font-bold text-violet-700 uppercase tracking-wider font-mono">Nearby Distance Key</h5>
+                      <h5 className="text-xs font-bold text-blue-700 uppercase tracking-wider font-mono">Nearby Distance Key</h5>
                       <div className="space-y-2 text-xs text-slate-600">
                         <div className="flex justify-between border-b border-slate-100 pb-1"><span>DPS Warangal:</span> <strong className="font-mono text-slate-800">2.0 Km</strong></div>
                         <div className="flex justify-between border-b border-slate-100 pb-1"><span>Outer Ring Road (ORR):</span> <strong className="font-mono text-slate-800">2.0 Km</strong></div>
@@ -376,18 +376,18 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
                   {/* Brand Footer Block */}
                   <div className="mt-6 bg-slate-900 text-white rounded-xl p-5 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
                     <div>
-                      <span className="block text-[11px] font-mono text-violet-400 font-bold uppercase tracking-wider">BROCHURE COMPILED BY</span>
+                      <span className="block text-[11px] font-mono text-blue-400 font-bold uppercase tracking-wider">BROCHURE COMPILED BY</span>
                       <strong className="block text-sm text-white font-sans font-extrabold uppercase">{PROJECT_INFO.developer}</strong>
                       <span className="block text-[10px] text-slate-400 mt-1">{PROJECT_INFO.address.split(',').slice(0, 3).join(',')}</span>
                     </div>
 
                     <div className="flex flex-col items-center sm:items-end">
                       <span className="block text-[10px] font-mono text-slate-400 tracking-wider">VIP ENQUIRIES</span>
-                      <a href={`tel:${PROJECT_INFO.phone}`} className="flex items-center text-white font-bold hover:text-violet-300 transition-colors text-base mt-0.5">
-                        <Phone className="h-4 w-4 mr-1.5 text-violet-400" />
+                      <a href={`tel:${PROJECT_INFO.phone}`} className="flex items-center text-white font-bold hover:text-blue-300 transition-colors text-base mt-0.5">
+                        <Phone className="h-4 w-4 mr-1.5 text-blue-400" />
                         <span>+91 {PROJECT_INFO.phone}</span>
                       </a>
-                      <span className="text-[9px] text-violet-300 bg-violet-900/40 px-2 py-0.5 rounded border border-violet-800/50 mt-1.5 font-mono">
+                      <span className="text-[9px] text-blue-300 bg-blue-900/40 px-2 py-0.5 rounded border border-blue-800/50 mt-1.5 font-mono">
                         TS RERA: {PROJECT_INFO.reraNumber}
                       </span>
                     </div>
@@ -417,7 +417,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
         {/* Page 1: Front Cover */}
         <div className="print-page bg-white text-slate-900 border-none relative overflow-hidden flex flex-col justify-between" style={{ height: "100vh", padding: "3in 2in 2in 2in" }}>
           <div className="text-center space-y-6">
-            <span className="font-mono font-bold text-xs text-violet-700 tracking-widest block uppercase">
+            <span className="font-mono font-bold text-xs text-blue-700 tracking-widest block uppercase">
               {PROJECT_INFO.developer}
             </span>
             <h1 className="text-6xl font-black tracking-tight text-slate-950 uppercase" style={{ fontSize: "3.5rem" }}>
@@ -458,8 +458,8 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
         {/* Page 2: Layout & Floorplans */}
         <div className="print-page bg-white text-slate-900 border-none relative flex flex-col justify-between" style={{ height: "100vh", padding: "1.5in" }}>
           <div>
-            <div className="border-b-2 border-violet-700 pb-4 mb-8">
-              <span className="font-mono font-bold text-[10px] text-violet-700 uppercase tracking-widest">SECTION 02</span>
+            <div className="border-b-2 border-blue-700 pb-4 mb-8">
+              <span className="font-mono font-bold text-[10px] text-blue-700 uppercase tracking-widest">SECTION 02</span>
               <h2 className="text-3xl font-black text-slate-950 uppercase tracking-tight">ORIGINAL LAYOUT & FLOOR PLANS</h2>
             </div>
 
@@ -482,7 +482,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
                     <td className="px-4 py-3 font-bold text-slate-900">{v.facing} Facing Triplex</td>
                     <td className="px-4 py-3 text-slate-600 font-mono">{v.plotSize}</td>
                     <td className="px-4 py-3 text-slate-600 font-medium">{v.plotArea}</td>
-                    <td className="px-4 py-3 text-right font-mono font-bold text-violet-800">{v.totalArea}</td>
+                    <td className="px-4 py-3 text-right font-mono font-bold text-blue-700">{v.totalArea}</td>
                   </tr>
                 ))}
               </tbody>
@@ -514,8 +514,8 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
         {/* Page 3: Clubhouse */}
         <div className="print-page bg-white text-slate-900 border-none relative flex flex-col justify-between" style={{ height: "100vh", padding: "1.5in" }}>
           <div>
-            <div className="border-b-2 border-violet-700 pb-4 mb-8">
-              <span className="font-mono font-bold text-[10px] text-violet-700 uppercase tracking-widest">SECTION 03</span>
+            <div className="border-b-2 border-blue-700 pb-4 mb-8">
+              <span className="font-mono font-bold text-[10px] text-blue-700 uppercase tracking-widest">SECTION 03</span>
               <h2 className="text-3xl font-black text-slate-950 uppercase tracking-tight">16,000 SFT RECREATION CLUBHOUSE</h2>
             </div>
 
@@ -536,7 +536,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
             <div className="grid grid-cols-5 gap-4 mt-8">
               {CLUBHOUSE_AMENITIES.map((lvl, idx) => (
                 <div key={idx} className="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2">
-                  <span className="block text-[10px] font-mono font-bold text-violet-700 uppercase">LEVEL {idx}</span>
+                  <span className="block text-[10px] font-mono font-bold text-blue-700 uppercase">LEVEL {idx}</span>
                   <strong className="block text-xs text-slate-950">{lvl.floor}</strong>
                   <p className="text-[10px] text-slate-500 leading-tight">{lvl.items.join(", ")}</p>
                 </div>
@@ -553,8 +553,8 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
         {/* Page 4: Technical Specifications & Contact */}
         <div className="print-page bg-white text-slate-900 border-none relative flex flex-col justify-between" style={{ height: "100vh", padding: "1.5in" }}>
           <div>
-            <div className="border-b-2 border-violet-700 pb-4 mb-8">
-              <span className="font-mono font-bold text-[10px] text-violet-700 uppercase tracking-widest">SECTION 04</span>
+            <div className="border-b-2 border-blue-700 pb-4 mb-8">
+              <span className="font-mono font-bold text-[10px] text-blue-700 uppercase tracking-widest">SECTION 04</span>
               <h2 className="text-3xl font-black text-slate-950 uppercase tracking-tight">SPECIFICATIONS & ACCESS ROAD</h2>
             </div>
 
@@ -585,7 +585,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
             {/* Official Contact Segment */}
             <div className="mt-12 p-8 bg-slate-950 text-white rounded-2xl flex justify-between items-center">
               <div>
-                <span className="text-[10px] font-mono text-violet-400 font-bold block uppercase tracking-wider">DEVELOPER OFFICE</span>
+                <span className="text-[10px] font-mono text-blue-400 font-bold block uppercase tracking-wider">DEVELOPER OFFICE</span>
                 <strong className="text-lg block uppercase">{PROJECT_INFO.developer}</strong>
                 <p className="text-[11px] text-slate-400 mt-1 max-w-sm leading-relaxed">{PROJECT_INFO.address}</p>
               </div>
@@ -593,7 +593,7 @@ export default function BrochureModal({ isOpen, onClose }: BrochureModalProps) {
               <div className="text-right">
                 <span className="text-[10px] font-mono text-slate-400 block tracking-wider uppercase">VIP DIRECT DESK</span>
                 <strong className="text-xl text-white block mt-0.5">+91 {PROJECT_INFO.phone}</strong>
-                <span className="text-xs text-violet-300 block mt-1 font-mono">TS RERA No: {PROJECT_INFO.reraNumber}</span>
+                <span className="text-xs text-blue-300 block mt-1 font-mono">TS RERA No: {PROJECT_INFO.reraNumber}</span>
               </div>
             </div>
           </div>

@@ -98,7 +98,7 @@ export default function VillaConfigurator({ onVillaSelect }: VillaConfiguratorPr
               }}
               className={`px-5 py-3 rounded-lg text-xs sm:text-sm font-semibold tracking-wider transition-all duration-300 focus:outline-none cursor-pointer ${
                 selectedVillaIndex === idx
-                  ? "bg-violet-600 text-white shadow-lg shadow-violet-700/30"
+                  ? "bg-gradient-to-r from-blue-600 to-violet-600 text-white shadow-lg shadow-blue-200"
                   : "bg-slate-800 hover:bg-slate-750 text-slate-300"
               }`}
             >
@@ -113,17 +113,17 @@ export default function VillaConfigurator({ onVillaSelect }: VillaConfiguratorPr
         <div className="lg:col-span-5 p-6 sm:p-10 border-r border-slate-100 flex flex-col justify-between">
           <div>
             <div className="flex items-center space-x-2.5 mb-5">
-              <span className="inline-block px-3 py-1 bg-violet-100 text-violet-700 rounded-md text-[11px] font-bold uppercase tracking-widest">
+              <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-md text-[11px] font-bold uppercase tracking-widest">
                 {villa.facing} FACING
               </span>
               <span className="flex items-center text-[11px] font-mono tracking-wider font-bold text-slate-400">
-                <Compass className="h-3.5 w-3.5 mr-1 text-violet-600 animate-spin" />
+                <Compass className="h-3.5 w-3.5 mr-1 text-blue-600 animate-spin" />
                 VASTU COMPLIANT
               </span>
             </div>
 
             <h3 className="text-3xl font-light text-slate-900 tracking-tight leading-tight">
-              The <span className="font-black text-violet-700">{villa.name.split(' ')[0]}</span> {villa.name.split(' ').slice(1).join(' ')}
+              The <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">{villa.name.split(' ')[0]}</span> {villa.name.split(' ').slice(1).join(' ')}
             </h3>
 
             <p className="text-slate-500 text-sm mt-4 leading-relaxed font-sans">
@@ -133,7 +133,7 @@ export default function VillaConfigurator({ onVillaSelect }: VillaConfiguratorPr
             {/* Sizes Key metrics */}
             <div className="grid grid-cols-2 gap-4 my-6 py-5 border-y border-slate-100">
               <div className="flex items-start space-x-3">
-                <div className="p-2.5 bg-violet-50 text-violet-700 rounded-lg">
+                <div className="p-2.5 bg-blue-50 text-blue-700 rounded-lg">
                   <Ruler className="h-4.5 w-4.5" />
                 </div>
                 <div>
@@ -145,7 +145,7 @@ export default function VillaConfigurator({ onVillaSelect }: VillaConfiguratorPr
               </div>
 
               <div className="flex items-start space-x-3">
-                <div className="p-2.5 bg-violet-50 text-violet-700 rounded-lg">
+                <div className="p-2.5 bg-blue-50 text-blue-700 rounded-lg">
                   <Maximize2 className="h-4.5 w-4.5" />
                 </div>
                 <div>
@@ -157,19 +157,19 @@ export default function VillaConfigurator({ onVillaSelect }: VillaConfiguratorPr
               </div>
 
               <div className="flex items-start space-x-3">
-                <div className="p-2.5 bg-violet-50 text-violet-700 rounded-lg">
+                <div className="p-2.5 bg-blue-50 text-blue-700 rounded-lg">
                   <Home className="h-4.5 w-4.5" />
                 </div>
                 <div>
                   <span className="block text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest">
                     Total Sft Area
                   </span>
-                  <span className="text-sm font-bold text-violet-800">{villa.totalArea}</span>
+                  <span className="text-sm font-bold text-blue-800">{villa.totalArea}</span>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3">
-                <div className="p-2.5 bg-violet-50 text-violet-700 rounded-lg">
+                <div className="p-2.5 bg-blue-50 text-blue-700 rounded-lg">
                   <Maximize2 className="h-4.5 w-4.5" />
                 </div>
                 <div>
@@ -188,7 +188,7 @@ export default function VillaConfigurator({ onVillaSelect }: VillaConfiguratorPr
               </span>
               {villa.features.map((feature, i) => (
                 <div key={i} className="flex items-start space-x-3">
-                  <div className="mt-1 p-0.5 bg-violet-50 text-violet-700 rounded-full border border-violet-100">
+                  <div className="mt-1 p-0.5 bg-blue-50 text-blue-700 rounded-full border border-blue-100">
                     <Check className="h-3 w-3" />
                   </div>
                   <span className="text-xs sm:text-sm text-slate-600 font-medium">{feature}</span>
@@ -201,7 +201,7 @@ export default function VillaConfigurator({ onVillaSelect }: VillaConfiguratorPr
             <button
               id={`btn_interest_villa_${villa.id}`}
               onClick={() => onVillaSelect(`${villa.facing} Facing Triplex Villa (${villa.totalArea})`)}
-              className="w-full flex items-center justify-center space-x-2 py-4 bg-violet-600 hover:bg-violet-700 text-white rounded-lg font-bold transition-all duration-300 shadow-lg shadow-violet-200 cursor-pointer hover:scale-[1.01]"
+              className="w-full flex items-center justify-center space-x-2 py-4 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white rounded-lg font-bold transition-all duration-300 shadow-lg shadow-blue-200 cursor-pointer hover:scale-[1.01]"
             >
               <span>Enquire About This Floorplan</span>
               <ArrowUpRight className="h-4 w-4" />
@@ -241,7 +241,7 @@ export default function VillaConfigurator({ onVillaSelect }: VillaConfiguratorPr
             </div>
 
             {/* Floor area detail label */}
-            <div className="mb-4 text-xs font-mono font-bold text-violet-700">
+            <div className="mb-4 text-xs font-mono font-bold text-blue-700">
               {selectedFloor === "ground" && `GROUND FLOOR AREA: ${villa.groundFloor}`}
               {selectedFloor === "first" && `FIRST FLOOR AREA: ${villa.firstFloor}`}
               {selectedFloor === "second" && `SECOND FLOOR AREA: ${villa.secondFloor}`}
@@ -258,11 +258,11 @@ export default function VillaConfigurator({ onVillaSelect }: VillaConfiguratorPr
                     <span className="block text-[11px] font-semibold text-slate-400 font-mono tracking-wider">
                       SPACE {index + 1}
                     </span>
-                    <span className="block font-bold text-sm text-violet-950 mt-0.5">
+                    <span className="block font-bold text-sm text-blue-950 mt-0.5">
                       {room.name}
                     </span>
                   </div>
-                  <div className="bg-violet-50 text-violet-800 border border-violet-100 font-mono text-xs font-bold px-2.5 py-1.5 rounded-lg shrink-0">
+                  <div className="bg-blue-50 text-blue-800 border border-blue-100 font-mono text-xs font-bold px-2.5 py-1.5 rounded-lg shrink-0">
                     {room.size}
                   </div>
                 </div>
@@ -271,9 +271,9 @@ export default function VillaConfigurator({ onVillaSelect }: VillaConfiguratorPr
           </div>
 
           {/* Graphical Blueprint Preview Illustration */}
-          <div className="mt-8 bg-white/50 border border-dashed border-violet-200 rounded-2xl p-6 flex flex-col items-center justify-center text-center">
-            <Compass className="h-10 w-10 text-violet-400 mb-2 animate-pulse" />
-            <span className="font-display font-bold text-xs text-violet-900 uppercase tracking-wider">
+          <div className="mt-8 bg-white/50 border border-dashed border-blue-200 rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+            <Compass className="h-10 w-10 text-blue-400 mb-2 animate-pulse" />
+            <span className="font-display font-bold text-xs text-blue-900 uppercase tracking-wider">
               Autogenerated Vastu Blueprint Matrix
             </span>
             <span className="text-[10px] text-slate-400 max-w-sm mt-1 leading-normal">
