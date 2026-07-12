@@ -296,7 +296,11 @@ app.post("/api/leads", async (req, res) => {
     createdAt: new Date().toISOString(),
   };
 
-  await addLead(newLead);
+  // Run lead insertion asynchronously in the background.
+  // This writes to the local JSON file immediately and tries Supabase without delaying the client.
+  addLead(newLead).catch((err) => {
+    console.error("Background Supabase lead insertion error:", err);
+  });
 
   res.status(201).json({ success: true, lead: newLead });
 });

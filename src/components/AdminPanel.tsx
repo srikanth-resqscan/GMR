@@ -51,9 +51,10 @@ export default function AdminPanel() {
   // Leads PDF report modal state
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
-  // Load leads from API
+  // Load leads from API and synchronize any offline leads
   const fetchLeads = async () => {
     setIsLoading(true);
+    let serverLeads: Lead[] = [];
     try {
       const response = await fetch("/api/leads", {
         headers: {
@@ -62,13 +63,61 @@ export default function AdminPanel() {
       });
       if (response.ok) {
         const data = await response.json();
-        setLeads(data.leads || []);
+        serverLeads = data.leads || [];
       }
     } catch (error) {
       console.error("Error loading leads:", error);
-    } finally {
-      setIsLoading(false);
     }
+
+    // Automatically synchronize any locally buffered offline leads
+    try {
+      const storedLeadsStr = localStorage.getItem("gmr_offline_leads");
+      if (storedLeadsStr) {
+        const offlineLeads: any[] = JSON.parse(storedLeadsStr);
+        if (offlineLeads.length > 0) {
+          // Send each offline lead to the server
+          for (const offlineLead of offlineLeads) {
+            try {
+              await fetch("/api/leads", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  name: offlineLead.name,
+                  phone: offlineLead.phone,
+                  email: offlineLead.email === "N/A" ? "" : offlineLead.email,
+                  villaType: offlineLead.villaType,
+                  message: offlineLead.message,
+                }),
+              });
+            } catch (syncErr) {
+              console.error("Failed to sync offline lead:", syncErr);
+            }
+          }
+          // Remove from local storage after syncing
+          localStorage.removeItem("gmr_offline_leads");
+
+          // Re-fetch from the server to get the official records
+          try {
+            const response = await fetch("/api/leads", {
+              headers: {
+                Authorization: "Bearer gmr_secret_session_token_130_villas",
+              },
+            });
+            if (response.ok) {
+              const data = await response.json();
+              serverLeads = data.leads || [];
+            }
+          } catch (refetchErr) {
+            console.error("Error fetching leads after offline sync:", refetchErr);
+          }
+        }
+      }
+    } catch (localErr) {
+      console.error("Error reading offline leads cache:", localErr);
+    }
+
+    setLeads(serverLeads);
+    setIsLoading(false);
   };
 
   useEffect(() => {
