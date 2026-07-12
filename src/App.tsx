@@ -100,88 +100,79 @@ export default function App() {
               <div className="absolute inset-0 bg-grid-pattern opacity-20 mix-blend-overlay"></div>
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 w-full">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-center lg:text-left">
-                {/* Left Column: Info & badging */}
-                <div className="lg:col-span-7 space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left">
-                  <div className="space-y-5">
-                    <span className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-md text-[11px] font-mono font-bold bg-blue-950/50 text-blue-200 border border-blue-500/30 uppercase tracking-widest animate-fadeIn">
-                      <Sparkles className="h-4 w-4 text-blue-300 animate-pulse" />
-                      <span>TS RERA REGISTERED NO. {PROJECT_INFO.reraNumber}</span>
-                    </span>
-                    
-                    <h1 className="text-5xl sm:text-7xl lg:text-7xl xl:text-8xl font-light tracking-tight leading-none text-white drop-shadow-md">
-                      LIVE <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-200 to-violet-300">WHOLEHEARTEDLY</span>
-                    </h1>
-                    
-                    <p className="text-lg sm:text-2xl font-light text-blue-100 max-w-3xl tracking-wide font-sans leading-relaxed">
-                      Breathtaking architecture meets modern blue and violet aesthetics. <br />
-                      <span className="font-semibold text-white">Gated Community Luxury Triplex Villas</span> @ Rampur, Hanamkonda
-                    </p>
-                    
-                    <p className="text-[10px] sm:text-xs font-mono text-blue-300/80 tracking-widest uppercase mt-4 font-bold">
-                      A PROJECT BY {PROJECT_INFO.developer} &bull; CREDAI MEMBER &bull; 100% VASTU COMPLIANT
-                    </p>
-                  </div>
-
-                  {/* Core metrics badges */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full pt-2">
-                    {[
-                      { value: "12.5 Acres", label: "Massive Campus" },
-                      { value: "130 Villas", label: "Exclusive Community" },
-                      { value: "16,000 Sft", label: "Grand Clubhouse" },
-                      { value: "G + 2 Floors", label: "Luxury Triplex Layout" }
-                    ].map((metric, idx) => (
-                      <div
-                        key={idx}
-                        className="bg-slate-900/40 backdrop-blur-md border border-white/10 p-4 rounded-xl flex flex-col justify-center shadow-xl hover:border-blue-400/40 hover:bg-slate-900/60 transition-all duration-300 group"
-                      >
-                        <span className="text-xl sm:text-2xl font-black text-white tracking-tight group-hover:text-blue-300 transition-colors">{metric.value}</span>
-                        <span className="text-[9px] font-mono font-bold text-blue-300 uppercase tracking-widest mt-1">
-                          {metric.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Action trigger buttons */}
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center pt-2 w-full sm:w-auto">
-                    <button
-                      id="btn_hero_villas_cta"
-                      onClick={() => {
-                        const el = document.getElementById("villas_section");
-                        if (el) el.scrollIntoView({ behavior: "smooth" });
-                      }}
-                      className="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white font-bold rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/20 hover:scale-[1.01] flex items-center justify-center space-x-2 cursor-pointer text-sm"
-                    >
-                      <span>Explore Floorplans</span>
-                      <ArrowRight className="h-4 w-4" />
-                    </button>
-
-                    <button
-                      id="btn_hero_brochure_pdf_cta"
-                      onClick={() => setIsBrochureOpen(true)}
-                      className="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-blue-900/60 to-violet-900/60 hover:from-blue-800/80 hover:to-violet-800/80 text-white rounded-xl font-bold transition-all duration-300 hover:scale-[1.01] flex items-center justify-center space-x-2 cursor-pointer border border-blue-500/30 shadow-lg shadow-blue-950/20 text-sm"
-                    >
-                      <FileText className="h-4 w-4 text-blue-300" />
-                      <span>Brochure PDF</span>
-                    </button>
-                    
-                    <button
-                      id="btn_hero_contact_cta"
-                      onClick={() => setIsFloatingFormOpen(true)}
-                      className="w-full sm:w-auto px-6 py-3.5 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white rounded-xl font-bold transition-all duration-300 hover:scale-[1.01] flex items-center justify-center space-x-2 cursor-pointer border border-white/20 text-sm"
-                    >
-                      <span>Book Site Visit</span>
-                    </button>
-                  </div>
+            <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 w-full">
+              <div className="flex flex-col items-center text-center space-y-10">
+                {/* Info & badging */}
+                <div className="space-y-6 flex flex-col items-center text-center">
+                  <span className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-md text-[11px] font-mono font-bold bg-blue-950/50 text-blue-200 border border-blue-500/30 uppercase tracking-widest animate-fadeIn">
+                    <Sparkles className="h-4 w-4 text-blue-300 animate-pulse" />
+                    <span>TS RERA REGISTERED NO. {PROJECT_INFO.reraNumber}</span>
+                  </span>
+                  
+                  <h1 className="text-5xl sm:text-7xl lg:text-8xl font-light tracking-tight leading-none text-white drop-shadow-md">
+                    LIVE <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-200 to-violet-300">WHOLEHEARTEDLY</span>
+                  </h1>
+                  
+                  <p className="text-lg sm:text-2xl font-light text-blue-100 max-w-3xl tracking-wide font-sans leading-relaxed">
+                    Breathtaking architecture meets modern blue and violet aesthetics. <br />
+                    <span className="font-semibold text-white">Gated Community Luxury Triplex Villas</span> @ Rampur, Hanamkonda
+                  </p>
+                  
+                  <p className="text-[10px] sm:text-xs font-mono text-blue-300/80 tracking-widest uppercase mt-2 font-bold">
+                    A PROJECT BY {PROJECT_INFO.developer} &bull; CREDAI MEMBER &bull; 100% VASTU COMPLIANT
+                  </p>
                 </div>
 
-                {/* Right Column: Hero Lead Form */}
-                <div className="lg:col-span-5 w-full text-slate-900">
-                  <div className="shadow-2xl shadow-blue-950/40 rounded-3xl overflow-hidden hover:scale-[1.005] transition-all duration-500 border border-blue-500/20">
-                    <LeadForm defaultVillaType="General Inquiry" onOpenBrochure={() => setIsBrochureOpen(true)} />
-                  </div>
+                {/* Core metrics badges */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 w-full max-w-4xl pt-2">
+                  {[
+                    { value: "12.5 Acres", label: "Massive Campus" },
+                    { value: "130 Villas", label: "Exclusive Community" },
+                    { value: "16,000 Sft", label: "Grand Clubhouse" },
+                    { value: "G + 2 Floors", label: "Luxury Triplex Layout" }
+                  ].map((metric, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-slate-900/40 backdrop-blur-md border border-white/10 p-5 rounded-xl flex flex-col justify-center items-center shadow-xl hover:border-blue-400/40 hover:bg-slate-900/60 transition-all duration-300 group"
+                    >
+                      <span className="text-xl sm:text-2xl font-black text-white tracking-tight group-hover:text-blue-300 transition-colors">{metric.value}</span>
+                      <span className="text-[9px] font-mono font-bold text-blue-300 uppercase tracking-widest mt-1 text-center">
+                        {metric.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Action trigger buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2 w-full sm:w-auto">
+                  <button
+                    id="btn_hero_villas_cta"
+                    onClick={() => {
+                      const el = document.getElementById("villas_section");
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white font-bold rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/20 hover:scale-[1.01] flex items-center justify-center space-x-2 cursor-pointer text-sm"
+                  >
+                    <span>Explore Floorplans</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+
+                  <button
+                    id="btn_hero_brochure_pdf_cta"
+                    onClick={() => setIsBrochureOpen(true)}
+                    className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-900/60 to-violet-900/60 hover:from-blue-800/80 hover:to-violet-800/80 text-white rounded-xl font-bold transition-all duration-300 hover:scale-[1.01] flex items-center justify-center space-x-2 cursor-pointer border border-blue-500/30 shadow-lg shadow-blue-950/20 text-sm"
+                  >
+                    <FileText className="h-4 w-4 text-blue-300" />
+                    <span>Brochure PDF</span>
+                  </button>
+                  
+                  <button
+                    id="btn_hero_contact_cta"
+                    onClick={() => setIsFloatingFormOpen(true)}
+                    className="w-full sm:w-auto px-8 py-4 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white rounded-xl font-bold transition-all duration-300 hover:scale-[1.01] flex items-center justify-center space-x-2 cursor-pointer border border-white/20 text-sm"
+                  >
+                    <span>Book Site Visit</span>
+                  </button>
                 </div>
               </div>
             </div>
