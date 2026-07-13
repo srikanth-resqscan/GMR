@@ -112,52 +112,70 @@ function writeConfig(config: any) {
 
 // Get all leads from Supabase (syncs and falls back to local cache if table is missing or offline)
 async function getLeads(): Promise<any[]> {
-  try {
-    const { data, error } = await supabase
-      .from("leads")
-      .select("*")
-      .order("createdAt", { ascending: false });
+  const tablesToTry = ["leads", "lead"];
+  let lastError: any = null;
 
-    if (error) {
-      console.warn("Supabase fetch leads error (table might not exist yet):", error.message);
-      return readLeads();
+  for (const tableName of tablesToTry) {
+    try {
+      // First try with createdAt
+      let result = await supabase
+        .from(tableName)
+        .select("*")
+        .order("createdAt", { ascending: false });
+
+      if (result.error) {
+        // If it's a sorting column issue, try order by created_at
+        result = await supabase
+          .from(tableName)
+          .select("*")
+          .order("created_at", { ascending: false });
+      }
+
+      if (result.error) {
+        // If sorting still fails, try without ordering
+        result = await supabase
+          .from(tableName)
+          .select("*");
+      }
+
+      if (!result.error && result.data) {
+        // Map both camelCase and snake_case properties to ensure full compatibility
+        const mappedLeads = result.data.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          email: item.email || "N/A",
+          phone: item.phone,
+          villaType: item.villaType || item.villa_type || "Not Specified",
+          message: item.message || "",
+          createdAt: item.createdAt || item.created_at || new Date().toISOString()
+        }));
+
+        // Cache locally to keep the warm backup in sync
+        writeLeads(mappedLeads);
+
+        // Add runtime validity properties
+        const now = new Date();
+        return mappedLeads.map((lead: any) => {
+          const createdDate = new Date(lead.createdAt);
+          const daysElapsed = Math.floor((now.getTime() - createdDate.getTime()) / (1000 * 60 * 60 * 24));
+          const daysRemaining = Math.max(0, 365 - daysElapsed);
+          const isValid = daysRemaining > 0;
+          
+          return {
+            ...lead,
+            daysRemaining,
+            isValid,
+            validUntil: new Date(createdDate.getTime() + 365 * 24 * 60 * 60 * 1000).toISOString()
+          };
+        });
+      }
+      lastError = result.error;
+    } catch (err: any) {
+      lastError = err;
     }
-
-    if (data) {
-      // Map both camelCase and snake_case properties to ensure full compatibility
-      const mappedLeads = data.map((item: any) => ({
-        id: item.id,
-        name: item.name,
-        email: item.email || "N/A",
-        phone: item.phone,
-        villaType: item.villaType || item.villa_type || "Not Specified",
-        message: item.message || "",
-        createdAt: item.createdAt || item.created_at || new Date().toISOString()
-      }));
-
-      // Cache locally to keep the warm backup in sync
-      writeLeads(mappedLeads);
-
-      // Add runtime validity properties
-      const now = new Date();
-      return mappedLeads.map((lead: any) => {
-        const createdDate = new Date(lead.createdAt);
-        const daysElapsed = Math.floor((now.getTime() - createdDate.getTime()) / (1000 * 60 * 60 * 24));
-        const daysRemaining = Math.max(0, 365 - daysElapsed);
-        const isValid = daysRemaining > 0;
-        
-        return {
-          ...lead,
-          daysRemaining,
-          isValid,
-          validUntil: new Date(createdDate.getTime() + 365 * 24 * 60 * 60 * 1000).toISOString()
-        };
-      });
-    }
-  } catch (err: any) {
-    console.error("Supabase leads exception, using local fallback:", err.message || err);
   }
 
+  console.warn("Supabase fetch leads failed on all table variations:", lastError?.message || lastError);
   return readLeads();
 }
 
@@ -168,33 +186,87 @@ async function addLead(lead: any): Promise<boolean> {
   localLeads.unshift(lead);
   writeLeads(localLeads);
 
-  try {
-    // Attempt Supabase insert (we pass both camelCase and snake_case versions for robust schema parsing)
-    const { error } = await supabase
-      .from("leads")
-      .insert([
-        {
-          id: lead.id,
-          name: lead.name,
-          email: lead.email,
-          phone: lead.phone,
-          villaType: lead.villaType,
-          villa_type: lead.villaType,
-          message: lead.message,
-          createdAt: lead.createdAt,
-          created_at: lead.createdAt
-        }
-      ]);
+  const tablesToTry = ["leads", "lead"];
+  
+  for (const tableName of tablesToTry) {
+    // We try multiple field payload combinations to match whatever column setup the table has
+    const insertionPayloads = [
+      // Strategy 1: Full snake_case with ID & dates
+      {
+        id: lead.id,
+        name: lead.name,
+        email: lead.email,
+        phone: lead.phone,
+        villa_type: lead.villaType,
+        message: lead.message,
+        created_at: lead.createdAt
+      },
+      // Strategy 2: Full camelCase with ID & dates
+      {
+        id: lead.id,
+        name: lead.name,
+        email: lead.email,
+        phone: lead.phone,
+        villaType: lead.villaType,
+        message: lead.message,
+        createdAt: lead.createdAt
+      },
+      // Strategy 3: Standard snake_case without dates/ID (let db defaults handle it)
+      {
+        name: lead.name,
+        email: lead.email,
+        phone: lead.phone,
+        villa_type: lead.villaType,
+        message: lead.message
+      },
+      // Strategy 4: Standard camelCase without dates/ID
+      {
+        name: lead.name,
+        email: lead.email,
+        phone: lead.phone,
+        villaType: lead.villaType,
+        message: lead.message
+      },
+      // Strategy 5: Basic fields (no villa type)
+      {
+        name: lead.name,
+        email: lead.email,
+        phone: lead.phone,
+        message: lead.message
+      },
+      // Strategy 6: Absolute minimum fields
+      {
+        name: lead.name,
+        phone: lead.phone
+      }
+    ];
 
-    if (error) {
-      console.warn("Supabase lead insert failed, using local caching:", error.message);
-      return false;
+    for (let i = 0; i < insertionPayloads.length; i++) {
+      const payload = insertionPayloads[i];
+      try {
+        const { error } = await supabase
+          .from(tableName)
+          .insert([payload]);
+
+        if (!error) {
+          console.log(`Successfully saved lead to Supabase table '${tableName}' using strategy ${i + 1}`);
+          return true;
+        }
+        
+        // If error is "relation does not exist", we should immediately move to the next table name rather than trying more payloads on this name
+        if (error.message && (error.message.includes("relation") || error.code === "42P01")) {
+          break; // break the payload loop, proceed to next table name
+        }
+        
+        console.warn(`Supabase strategy ${i + 1} on table '${tableName}' failed:`, error.message);
+      } catch (err: any) {
+        console.error(`Exception in strategy ${i + 1} on table '${tableName}':`, err.message || err);
+      }
     }
-    return true;
-  } catch (err: any) {
-    console.error("Supabase insert exception, using local caching:", err.message || err);
-    return false;
   }
+
+  console.warn("Could not save lead to Supabase. Placed in local cache fallback.");
+  return false;
 }
 
 // Delete a lead from Supabase (deletes locally and attempts remote deletion)
@@ -208,21 +280,29 @@ async function deleteLead(id: string): Promise<boolean> {
   }));
   writeLeads(cleanLeads);
 
-  try {
-    const { error } = await supabase
-      .from("leads")
-      .delete()
-      .eq("id", id);
+  const tablesToTry = ["leads", "lead"];
+  for (const tableName of tablesToTry) {
+    try {
+      const { error } = await supabase
+        .from(tableName)
+        .delete()
+        .eq("id", id);
 
-    if (error) {
-      console.warn("Supabase lead deletion failed, using local deletion:", error.message);
-      return false;
+      if (!error) {
+        return true;
+      }
+      
+      // If table doesn't exist, try the next table
+      if (error.message && (error.message.includes("relation") || error.code === "42P01")) {
+        continue;
+      }
+      
+      console.warn(`Supabase lead deletion on table '${tableName}' failed:`, error.message);
+    } catch (err: any) {
+      console.error(`Supabase delete exception on table '${tableName}':`, err.message || err);
     }
-    return true;
-  } catch (err: any) {
-    console.error("Supabase delete exception, using local deletion:", err.message || err);
-    return false;
   }
+  return false;
 }
 
 // Get admin config from Supabase (with fallback)
