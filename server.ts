@@ -47,8 +47,8 @@ if (!fs.existsSync(CONFIG_FILE)) {
 }
 
 // Supabase Client Setup (with fallback credentials)
-const SUPABASE_URL = process.env.SUPABASE_URL || "https://ycrzykzjtuqsozzcvbqg.supabase.co";
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || "sb_publishable_K4eu9n6AhTVzxd4WVqyocw_bP6gvdOC";
+const SUPABASE_URL = process.env.SUPABASE_URL || "https://wcgzyshhkovahdxdrtyc.supabase.co";
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || "sb_publishable_t3sny_SBdNu2AY15nYoxmw_AP5O1fSl";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
