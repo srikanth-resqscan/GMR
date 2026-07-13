@@ -21,6 +21,28 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<{ name?: string; phone?: string; email?: string }>({});
+
+  const handleNameChange = (val: string) => {
+    setName(val);
+    if (fieldErrors.name) {
+      setFieldErrors((prev) => ({ ...prev, name: undefined }));
+    }
+  };
+
+  const handlePhoneChange = (val: string) => {
+    setPhone(val);
+    if (fieldErrors.phone) {
+      setFieldErrors((prev) => ({ ...prev, phone: undefined }));
+    }
+  };
+
+  const handleEmailChange = (val: string) => {
+    setEmail(val);
+    if (fieldErrors.email) {
+      setFieldErrors((prev) => ({ ...prev, email: undefined }));
+    }
+  };
 
   const saveLeadToLocalStorage = (newLead: any) => {
     try {
@@ -36,16 +58,35 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg("");
+    setFieldErrors({});
     setIsSubmitting(true);
 
-    if (!name.trim()) {
-      setErrorMsg("Please enter your name.");
-      setIsSubmitting(false);
-      return;
+    const errors: { name?: string; phone?: string; email?: string } = {};
+
+    const trimmedName = name.trim();
+    if (!trimmedName) {
+      errors.name = "Full Name is required.";
     }
 
-    if (!phone.trim() || phone.trim().length < 10) {
-      setErrorMsg("Please enter a valid 10-digit phone number.");
+    const trimmedPhone = phone.trim();
+    const cleanPhone = trimmedPhone.replace(/[^0-9]/g, "");
+    if (!trimmedPhone) {
+      errors.phone = "Phone Number is required.";
+    } else if (cleanPhone.length < 10) {
+      errors.phone = "Please enter a valid 10-digit phone number.";
+    }
+
+    const trimmedEmail = email.trim();
+    if (trimmedEmail) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(trimmedEmail)) {
+        errors.email = "Please enter a valid email address (e.g., name@example.com).";
+      }
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      setErrorMsg("Please fix the validation errors below.");
       setIsSubmitting(false);
       return;
     }
@@ -156,25 +197,33 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
         </p>
       </div>
 
-      <form id="form_property_enquiry" onSubmit={handleSubmit} className="space-y-6">
+      <form id="form_property_enquiry" onSubmit={handleSubmit} className="space-y-6" noValidate>
         <div>
           <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-2.5">
             Full Name <span className="text-rose-500">*</span>
           </label>
           <div className="relative">
-            <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
+            <span className={`absolute inset-y-0 left-0 pl-4 flex items-center ${fieldErrors.name ? "text-rose-400" : "text-slate-400"}`}>
               <User className="h-4 w-4" />
             </span>
             <input
               id="input_lead_name"
               type="text"
-              required
               placeholder="e.g. Srikanth Rao"
               value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm focus:bg-white transition-all duration-300 outline-none font-sans text-slate-900"
+              onChange={(e) => handleNameChange(e.target.value)}
+              className={`pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border rounded-lg focus:ring-2 focus:bg-white transition-all duration-300 outline-none font-sans text-slate-900 ${
+                fieldErrors.name
+                  ? "border-rose-400 focus:ring-rose-500 focus:border-rose-500 bg-rose-50/10"
+                  : "border-slate-200 focus:ring-blue-500 focus:border-blue-500"
+              }`}
             />
           </div>
+          {fieldErrors.name && (
+            <p className="mt-1.5 text-xs text-rose-500 font-sans font-medium animate-fadeIn">
+              {fieldErrors.name}
+            </p>
+          )}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -183,19 +232,27 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
               Phone Number <span className="text-rose-500">*</span>
             </label>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
+              <span className={`absolute inset-y-0 left-0 pl-4 flex items-center ${fieldErrors.phone ? "text-rose-400" : "text-slate-400"}`}>
                 <Smartphone className="h-4 w-4" />
               </span>
               <input
                 id="input_lead_phone"
                 type="tel"
-                required
                 placeholder="e.g. 9704707976"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm focus:bg-white transition-all duration-300 outline-none font-sans text-slate-900"
+                onChange={(e) => handlePhoneChange(e.target.value)}
+                className={`pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border rounded-lg focus:ring-2 focus:bg-white transition-all duration-300 outline-none font-sans text-slate-900 ${
+                  fieldErrors.phone
+                    ? "border-rose-400 focus:ring-rose-500 focus:border-rose-500 bg-rose-50/10"
+                    : "border-slate-200 focus:ring-blue-500 focus:border-blue-500"
+                }`}
               />
             </div>
+            {fieldErrors.phone && (
+              <p className="mt-1.5 text-xs text-rose-500 font-sans font-medium animate-fadeIn">
+                {fieldErrors.phone}
+              </p>
+            )}
           </div>
 
           <div>
@@ -203,7 +260,7 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
               Email Address <span className="text-slate-400 font-medium">(Optional)</span>
             </label>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
+              <span className={`absolute inset-y-0 left-0 pl-4 flex items-center ${fieldErrors.email ? "text-rose-400" : "text-slate-400"}`}>
                 <Mail className="h-4 w-4" />
               </span>
               <input
@@ -211,10 +268,19 @@ export default function LeadForm({ defaultVillaType = "General Inquiry", onOpenB
                 type="email"
                 placeholder="e.g. srikanth@gmail.com"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm focus:bg-white transition-all duration-300 outline-none font-sans text-slate-900"
+                onChange={(e) => handleEmailChange(e.target.value)}
+                className={`pl-11 pr-4 py-3.5 block w-full bg-slate-50/50 border rounded-lg focus:ring-2 focus:bg-white transition-all duration-300 outline-none font-sans text-slate-900 ${
+                  fieldErrors.email
+                    ? "border-rose-400 focus:ring-rose-500 focus:border-rose-500 bg-rose-50/10"
+                    : "border-slate-200 focus:ring-blue-500 focus:border-blue-500"
+                }`}
               />
             </div>
+            {fieldErrors.email && (
+              <p className="mt-1.5 text-xs text-rose-500 font-sans font-medium animate-fadeIn">
+                {fieldErrors.email}
+              </p>
+            )}
           </div>
         </div>
 
